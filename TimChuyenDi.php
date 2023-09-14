@@ -88,31 +88,32 @@
 					</div>
 			</div>
 
-            <div class="col">
-
-                <p class="text-center">Từ</p>
-                <div class="dropdown d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="selectedItem2" >Nơi đi
-					</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#" onclick="selectItem2('Hà Nội')">Hà Nội</a></li>
-						<li><a class="dropdown-item" href="#" onclick="selectItem2('Hạ Long')">Hạ Long</a></li>
-						<li><a class="dropdown-item" href="#" onclick="selectItem2('Đà Lạt')">Đà Lạt</a></li>
-                    </ul>
+                <div class="col">
+                    <p class="text-center">Từ</p>
+                    <div class="dropdown d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                            id="selectedItem2">Nơi đi
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="selectItem2('Hà Nội')">Hà Nội</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectItem2('Hạ Long')">Hạ Long</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectItem2('Đà Lạt')">Đà Lạt</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="col">
-				<p class="text-center">Đến</p>
-				<div class="dropdown d-flex justify-content-center">
-					<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="selectedItem3" >Nơi đến
-					</button>
-					<ul class="dropdown-menu">	
-						<li><a class="dropdown-item" href="#" onclick="selectItem3('Hà Nội')">Hà Nội</a></li>
-						<li><a class="dropdown-item" href="#" onclick="selectItem3('Hạ Long')">Hạ Long</a></li>
-						<li><a class="dropdown-item" href="#" onclick="selectItem3('Đà Lạt')">Đà Lạt</a></li>
-					</ul>
-				</div>
-			</div>
+                <div class="col">
+                    <p class="text-center">Đến</p>
+                    <div class="dropdown d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                            id="selectedItem3">Nơi đến
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="selectItem3('Hà Nội')">Hà Nội</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectItem3('Hạ Long')">Hạ Long</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectItem3('Đà Lạt')">Đà Lạt</a></li>
+                        </ul>
+                    </div>
+                </div>
 
 
         </div>
