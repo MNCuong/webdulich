@@ -43,7 +43,7 @@
             </div>
 
             <!-- The slideshow/carousel -->
-            Đây là đoạn t sửa
+            Đây là đoạn t sửa tu nhanh cua t
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg/1200px-Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg"
