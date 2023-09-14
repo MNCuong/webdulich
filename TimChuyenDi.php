@@ -22,7 +22,8 @@
     <div class="container marginTop">
         <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
-
+<div></div>
+<div></div>
             <!-- Indicators/dots -->
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
