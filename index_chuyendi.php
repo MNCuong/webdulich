@@ -4,7 +4,7 @@
 ?>
 <br><br>
 <?php 
-		include './TimChuyenDi.php';
+		include './timChuyenDi.php';
 ?>
 
 <br><br>
