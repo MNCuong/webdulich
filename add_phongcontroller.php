@@ -1,7 +1,8 @@
 <?php
 		$price = isset($_REQUEST["price"]) ? $_REQUEST["price"] : "";
 		$description = isset($_REQUEST["description"]) ? $_REQUEST["description"] : "";
-	//echo $tenhang; echo $xx;
+		$tinhtrang = isset($_REQUEST["tinhtrang"]) ? $_REQUEST["tinhtrang"] : "";
+
 	
 	
 	//Xử lý ảnh tải lên
@@ -22,7 +23,7 @@
 		$conn=new mysqli("localhost","root","",$db) or die ("Không connect đc với máy chủ");//tạo kết nối với server
 		if (!empty($price) && !empty($description)) {
 	
-			$sql_add="INSERT INTO `anhhh` ( `price`,`description`, `anhphong`) VALUES ('$price','$description','$file__name')";
+			$sql_add="INSERT INTO `anhhh` ( `price`,`description`, `anhphong`,`tinhtrang`) VALUES ('$price','$description','$file__name','$tinhtrang')";
 
 
 		mysqli_query($conn,$sql_add);	

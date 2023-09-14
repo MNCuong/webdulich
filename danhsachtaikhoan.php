@@ -112,6 +112,38 @@
 		i{
 			color: black;
 		}
+		
+		a[href="dangky.php"] button,a[href="indexadmin.php"] button, button[type="submit"] {
+			background-color: rgba(19,99,222,1.00);
+			color: white;
+			padding: 10px 20px;
+			text-decoration: none;
+			border: none;
+			border-radius: 5px;
+			font-weight: bold;
+			transition: background-color 0.3s ease-in-out;
+			cursor: pointer;
+		}
+
+		a[href="dangky.php"] button:hover,a[href="indexadmin.php"] button:hover, button[type="submit"]:hover {
+			opacity: 0.7;
+
+		}
+		.timkiem{
+			display: flex;
+			width: 60%;
+			margin: 0 auto;
+		}
+		.main{
+			width: 100%;
+		}
+		.timkiembutton{
+			width: 80%;
+			padding: 12px;
+			border-radius: 24px;
+			font-size: 16px;
+			border: 1px solid rgba(208,205,205,1.00);
+		}
 
 	</style>
 
@@ -119,9 +151,24 @@
 </head>
 
 <body>
-		
+		<div class="nut" align="center">			
+		<a href="dangky.php" ><button><i class="fa-solid fa-user-plus" style="color: #f7f7f8;"></i>Thêm tài khoản</button></a>
+		</div>
+		<form action="timkiemtaikhoan_controller.php" method="post">
+			<div class="timkiem">
+			<div class="main">
+				<p>Tìm kiếm:</p>
+				<input type="search" name="search" class="timkiembutton" placeholder="Nhập từ khóa tìm kiếm">
+				<button type="submit" class="search-button">
+					<i class="fa-solid fa-magnifying-glass" style="color: #f7f7f8;"></i>
+					Tìm kiếm
+				</button>			
+			</div>
+	
+		</div>
+		</form>
 	<?php
-		$sobg=4;
+		$sobg=5;
 		$db="anh";
 		$conn=new mysqli("localhost","root","",$db) or die ("Không connect đc với máy chủ");//tạo kết nối với server
 		$current_page = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
@@ -156,7 +203,7 @@
 	<table  align="center" border="1">
 	  <tbody>
 		<tr>
-		  <td colspan="7" align="">Danh mục tài khoản</td>
+		  <td colspan="8" align="">Danh mục tài khoản</td>
 		</tr>
 		<tr align="center">
 		  <td width="38">&nbsp;</td>
@@ -192,18 +239,17 @@
 		  }
 		  ?>
 		<tr>
-		  <td colspan="7" align="right">Có tổng số <?php echo $tong_bg?> hãng sản xuất</td>
+		  <td colspan="8" align="right">Có tổng số <?php echo $tong_bg?> hãng sản xuất</td>
 		</tr>
 	  </tbody>
 	</table>
 		<ul>
 			<?php
 				for ($i = 1; $i <= $soluongtrang; $i++) {
-					echo "<li><a href='danhsachtaikhoan.php?page=$i'>$i</a></li> ";
+					echo "<li><a href='indexadmin.php?page=$i'>$i</a></li> ";
 				}
 			?>
 		</ul>
-	<a href="xacnhanupdatetaikhoanadmin.php?id=<?php echo $id[$i]?>"><button>Xác nhận</button></a>
 </body>
 	
 </html>

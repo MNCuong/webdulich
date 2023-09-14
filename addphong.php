@@ -7,22 +7,29 @@
     /* Form styling */
     body {
         font-family: Arial, sans-serif;
-        background-color: #f2f2f2;
+        background: url(https://th.bing.com/th/id/R.879c522d63acf0e33c3be4c33549937b?rik=7UdDaNUaVeLTVg&riu=http%3a%2f%2fwww.czxww.cn%2fmobile%2fpic%2f2022-09%2f13%2f1329091_3f8d51f0-8361-433f-a6ec-950103e267d8.jpg.2&ehk=Pes%2fid5U%2b7jLKMZhmk%2bpugqsR8dxDEeWmij6OqZVTr8%3d&risl=&pid=ImgRaw&r=0);
+		background-size: cover;
     }
     .container {
         max-width: 400px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 24px;
         background-color: #fff;
         border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 8px 16px black;
+		margin-top: 8%;
+		
     }
+	.container:hover{
+		transform: scale(1.01);
+	}
     h1 {
         text-align: center;
         color: #FF5733;
     }
     table {
         width: 100%;
+		
     }
     table tr {
         text-align: left;
@@ -51,6 +58,8 @@
         background-color: #FF7044;
     }
 </style>
+	
+
 </head>
 
 <body>
@@ -68,11 +77,15 @@
                 </tr>
                 <tr>
                     <td>Ảnh</td>
-                    <td><input type="file" name="anhphong" required></td>
+                    <td><input type="file"  name="anhphong" required></td>
+                </tr>
+				<tr>
+                    <td>Tình trạng</td>
+                    <td><input type="text" name="tinhtrang"  readonly value="Chưa đặt"></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="Nhập"></td>
+                    <td><input type="submit" value="Xác nhận"></td>
                 </tr>
             </table>
         </form>

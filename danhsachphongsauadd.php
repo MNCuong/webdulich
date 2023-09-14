@@ -4,23 +4,26 @@
 <meta charset="utf-8">
 <title>Danh sach phong</title>
 	<style>
-	/* Update the title style */
+	
 h1 {
     color: #FF5733;
-    font-size: 36px; /* Increase the font size */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle text shadow */
+    font-size: 36px; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
+		body{
+			background-image: url(https://kconceptvn.com/wp-content/uploads/2020/04/hotel-photography-chup-anh-khach-san-khach-san-bamboo-sapa-hotel-18-1024x683.jpg);
+			background-size: cover;
+		}
 
-/* Update the table style */
 table {
-    width: 80%; /* Reduce the width to 80% of the container */
-    margin: 20px auto; /* Center align the table */
-    border: 2px solid #333; /* Add a border to the table */
-    border-radius: 10px; /* Add rounded corners */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a box shadow */
+    width: 80%; 
+    margin: 20px auto; 
+    border: 2px solid #333;
+    border-radius: 10px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+	background:rgba(239,235,235,1.00);
 }
 
-/* Update the table header style */
 th {
     background-color: #333;
     color: white;
@@ -28,36 +31,35 @@ th {
     text-align: center;
 }
 
-/* Update the table data style */
+
 td {
     padding: 15px;
-    text-align: center; /* Center align the table data */
+    text-align: center; 
 }
 
-/* Add a hover effect to table rows */
+
 tr:hover {
-    background-color: #ddd; /* Light gray background on hover */
+    background-color: #ddd; 
+	cursor: pointer;
 }
 
-/* Enhance the image style */
 img {
     border: 3px solid #ccc;
     border-radius: 10px;
-    transition: transform 0.3s ease-in-out; /* Slightly slower and smoother transition */
+    transition: transform 0.3s ease-in-out; 
     display: block;
     margin: 0 auto;
 }
 
-/* Further enhance the image on hover */
+
 img:hover {
-    transform: scale(1.05); /* Slightly larger scale on hover */
-    border-color: #FF5733; /* Change border color on hover */
+    transform: scale(1.05); 
+    border-color: #FF5733; 
 }
 
-/* Style the "Add" button */
-a[href="addphong.php"] button {
-    background-color: #FF5733;
-    color: white;
+a[href="addphong.php"] button,a[href="indexadmin.php"] button {
+	background-color: rgba(19,99,222,1.00);
+	color: white;
     padding: 10px 20px;
     text-decoration: none;
     border: none;
@@ -67,8 +69,9 @@ a[href="addphong.php"] button {
     cursor: pointer;
 }
 
-a[href="addphong.php"] button:hover {
-    background-color: #FF7044;
+a[href="addphong.php"] button:hover,a[href="indexadmin.php"] button:hover {
+    background-color: #E4482D;
+	
 }
 ul {
 			list-style-type: none;
@@ -104,7 +107,10 @@ ul {
 </head>
 
 <body>
-		
+	<div class="nut" align="center">			
+		<a href="addphong.php" ><button>Thêm phòng</button></a>
+		<a href="indexadmin.php" ><button>Trở về</button></a>
+	</div>
 	<?php
 	$sobg=4;
 		$db="anh";
@@ -142,7 +148,7 @@ ul {
 	<table width="400" align="center" border="1">
 	  <tbody>
 		<tr>
-		  <td colspan="6" align="">Danh mục hãng sản xuất</td>
+		  <td colspan="6" align=""><h3>Danh sách phòng</h3></td>
 		</tr>
 		<tr align="center">
 		  <td width="38">STT</td>
@@ -186,7 +192,6 @@ ul {
 				}
 			?>
 		</ul>
-	<a href="addphong.php"><button>Them</button></a>
 </body>
 	
 </html>

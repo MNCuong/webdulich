@@ -25,9 +25,7 @@
 	</style>
 </head>
 <body>
-	<script>
-		swal("Xin chao admin;")
-	</script>
+	
 	<form action="dangnhapadmin_controller.php" method="post">
 		<div class="nav">
 		<div class="mainlogin"> 
@@ -37,7 +35,7 @@
 				</div>
 
 				<div class="main_login">
-					<p style="font-size: 25px;font-weight: 700;margin-bottom: 0">Đăng nhập hệ thống </p>
+					<p style="font-size: 25px;font-weight: 700;margin-bottom: 0">Đăng nhập hệ thống ADMIN </p>
 					<input type="text" name="username" placeholder="Tên đăng nhập"><br><br>
 					<input type="password" name="password" placeholder="Mật khẩu"><br><br>
 					<input type="submit" value="Đăng nhập">
