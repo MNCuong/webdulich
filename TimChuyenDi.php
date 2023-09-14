@@ -75,7 +75,6 @@
                 </div>
 
                 <div class="col">
-
                     <p class="text-center">Từ</p>
                     <div class="dropdown d-flex justify-content-center">
                         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
