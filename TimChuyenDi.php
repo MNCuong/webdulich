@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="margin-top: 100px;">
         <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
             <!-- Indicators/dots -->
@@ -53,8 +53,8 @@
         </div>
     </div>
 
-    <form action="">
-        <div class="container" style="border-style: solid; border-width: 1px; border-radius: 10px;">
+    <form action="danhSachChuyenDi.php">
+        <div class="container" style="margin-top: 100px; border-style: solid; border-width: 1px; border-radius: 10px;">
             <div class="row text-uppercase text-center fs-1">
                 <p>Tìm chuyến đi</p>
             </div>
@@ -121,8 +121,7 @@
             </div>
             <div class="row">
                 <div class="col d-flex justify-content-center">
-
-                    <input type="button" class="btn btn-primary" name="tim" value="Tìm">
+                    <button type="submit" class="button" >Tìm</button>
                 </div>
             </div>
         </div>
