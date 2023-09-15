@@ -213,18 +213,18 @@
             </div>
             <div class="description">
                 <p>Đây là mô tả của hình ảnh. Bạn có thể thêm một số văn bản ở đây để mô tả hình ảnh.</p>
-				<a href=""><button>Đặt phòng</button></a>
+				<a href="danhsachphongks.php"><button>Đặt phòng</button></a>
             </div>
         </div>
 			<div class="image-description">
             <div class="image">
-                <a href="">
+                <a href="danhsachphongks.php">
                     <img src="https://th.bing.com/th/id/OIP.s1dDG8gYZBkT0Lk4zER6TwHaE7?w=260&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
                 </a>
             </div>
             <div class="description">
                 <p>Đây là mô tả của hình ảnh. Bạn có thể thêm một số văn bản ở đây để mô tả hình ảnh.</p>
-				<a href=""><button>Đặt phòng</button></a>
+				<a href="danhsachphongks.php"><button>Đặt phòng</button></a>
             </div>
         </div>
 			<div class="image-description">
@@ -235,7 +235,7 @@
             </div>
             <div class="description">
                 <p>Đây là mô tả của hình ảnh. Bạn có thể thêm một số văn bản ở đây để mô tả hình ảnh.</p>
-				<a href=""><button>Đặt phòng</button></a>
+				<a href="danhsachphongks.php"><button>Đặt phòng</button></a>
             </div>
         </div>
 			<div class="image-description">
@@ -246,7 +246,7 @@
             </div>
             <div class="description">
                 <p>Đây là mô tả của hình ảnh. Bạn có thể thêm một số văn bản ở đây để mô tả hình ảnh.</p>
-				<a href=""><button>Đặt phòng</button></a>
+				<a href="danhsachphongks.php"><button>Đặt phòng</button></a>
             </div>
         </div>
     </div>
