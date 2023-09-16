@@ -6,19 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 
+    <style>
+        .row {
+            padding: 20px;
+        }
+
+        .col {
+            padding: 0px 30px 0px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container marginTop">
-
         <form action="">
             <div class="container marginTop" style="border-style: solid; border-width: 1px; border-radius: 10px;">
                 <div class="row text-uppercase text-center fs-1">
@@ -26,40 +37,29 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <p class="text-center">Loại phương tiện</p>
                         <div class="dropdown d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="selectedItem1">Loại phương tiện
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                id="selectedItem1">Loại phương tiện
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#" onclick="selectItem1('Máy bay')">Máy bay</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="selectItem1('Xe khách')">Xe khách</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="selectItem1('Xe khách')">Xe khách</a>
+                                </li>
                                 <li><a class="dropdown-item" href="#" onclick="selectItem1('Tàu hoả')">Tàu hoả</a></li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="col">
-                        <p class="text-center">Điểm khởi hành</p>
-                        <div class="dropdown d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="selectedItem2">Nơi đi
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" onclick="selectItem2('Hà Nội')">Hà Nội</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="selectItem2('Hạ Long')">Hạ Long</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="selectItem2('Đà Lạt')">Đà Lạt</a></li>
-                            </ul>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Điểm khởi hành</span>
+                            <input type="text" class="form-control">
                         </div>
                     </div>
                     <div class="col">
-                        <p class="text-center">Điểm đến</p>
-                        <div class="dropdown d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="selectedItem3">Nơi đến
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" onclick="selectItem3('Hà Nội')">Hà Nội</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="selectItem3('Hạ Long')">Hạ Long</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="selectItem3('Đà Lạt')">Đà Lạt</a></li>
-                            </ul>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Điểm đến</span>
+                            <input type="text" class="form-control">
                         </div>
                     </div>
 
@@ -68,24 +68,28 @@
 
                 <div class="row">
                     <div class="col">
-                        <p class="text-center">Ngày đi</p>
-                        <div class="form-outline d-flex justify-content-center">
-                            <input type="date" id="typeNumber" class="form-control-lg" />
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Ngày đi</span>
+                            <input type="date" class="form-control">
                         </div>
-
                     </div>
                     <div class="col">
-                        <p class="text-center">Số hành khách</p>
-                        <div class="form-outline d-flex justify-content-center">
-                            <input type="number" id="typeNumber" min="1" class="form-control-lg" />
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Số hành khách</span>
+                            <input type="number" class="form-control">
                         </div>
                     </div>
-
+                    <div class="col ">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Giá vé</span>
+                            <input type="number" class="form-control">
+                        </div>
+                    </div>
                 </div>
+
                 <div class="row">
                     <div class="col d-flex justify-content-center">
-
-                        <input type="button" class="btn btn-primary" name="tim" value="Tìm">
+                        <input type="button" class="btn btn-primary" name="tim" value="Thêm chuyến đi">
                     </div>
                 </div>
             </div>

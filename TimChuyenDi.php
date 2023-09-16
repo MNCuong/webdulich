@@ -30,16 +30,13 @@
             <!-- The slideshow/carousel -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg/1200px-Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg"
-                        alt="Los Angeles" class="d-block w-100">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg/1200px-Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg" alt="Los Angeles" class="d-block w-100">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg/1200px-Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg"
-                        alt="Chicago" class="d-block w-100">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg/1200px-Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg" alt="Chicago" class="d-block w-100">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg/1200px-Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg"
-                        alt="New York" class="d-block w-100">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg/1200px-Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg" alt="New York" class="d-block w-100">
                 </div>
             </div>
 
@@ -62,8 +59,7 @@
                 <div class="col">
                     <p class="text-center">Loại phương tiện</p>
                     <div class="dropdown d-flex justify-content-center">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                            id="selectedItem1">Loại phương tiện
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="selectedItem1">Loại phương tiện
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#" onclick="selectItem1('Máy bay')">Máy bay</a></li>
@@ -76,8 +72,7 @@
                 <div class="col">
                     <p class="text-center">Từ</p>
                     <div class="dropdown d-flex justify-content-center">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                            id="selectedItem2">Nơi đi
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="selectedItem2">Nơi đi
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#" onclick="selectItem2('Hà Nội')">Hà Nội</a></li>
@@ -89,8 +84,7 @@
                 <div class="col">
                     <p class="text-center">Đến</p>
                     <div class="dropdown d-flex justify-content-center">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                            id="selectedItem3">Nơi đến
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="selectedItem3">Nơi đến
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#" onclick="selectItem3('Hà Nội')">Hà Nội</a></li>
@@ -121,21 +115,24 @@
             </div>
             <div class="row">
                 <div class="col d-flex justify-content-center">
-                    <button type="submit" class="button" >Tìm</button>
+                    <button type="submit" class="button">Tìm</button>
                 </div>
             </div>
         </div>
     </form>
 
-    <script>function selectItem3(item) {
+    <script>
+        function selectItem3(item) {
             document.getElementById('selectedItem1').textContent = `${item}`;
 
 
         }
+
         function selectItem2(item) {
             document.getElementById('selectedItem2').textContent = `${item}`;
 
         }
+
         function selectItem3(item) {
 
             document.getElementById('selectedItem3').textContent = `${item}`;

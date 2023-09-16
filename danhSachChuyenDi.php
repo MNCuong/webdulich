@@ -14,11 +14,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
-
 </head>
 
 <body>
-  
+    <?php include './header.php'; ?>
     <div class="container" style="margin-top: 100px;">
         <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -53,7 +52,7 @@
     </div>
 
 
-    
+
     <div class="container" style="padding-top:  50px;">
         <div class="row text-uppercase text-center fs-1">
             <p>Danh sách chuyến đi</p>
@@ -104,6 +103,8 @@
             <?php include './itemChuyenDi.php'; ?>
         </div>
     </div>
+
+    <?php include './footer.php'; ?>
 </body>
 
 </html>
