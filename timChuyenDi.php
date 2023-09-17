@@ -124,8 +124,6 @@
     <script>
         function selectItem3(item) {
             document.getElementById('selectedItem1').textContent = `${item}`;
-
-
         }
 
         function selectItem2(item) {

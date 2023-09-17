@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <?php include './header.php'; ?>
+    <!-- <?php include './header.php'; ?> -->
     <div class="container" style="margin-top: 100px;">
         <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
