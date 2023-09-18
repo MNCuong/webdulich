@@ -34,7 +34,7 @@
                 Dropdown button
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" onclick="selectItem1('Máy bay')" href="adminDanhSachChuyenDi.php?phuongtien=1">Máy bay</a></li>
+                <li><a class="dropdown-item" href="adminDanhSachChuyenDi.php?phuongtien=1" onclick="selectItem1('Máy bay')">Máy bay</a></li>
                 <li><a class="dropdown-item" href="adminDanhSachChuyenDi.php?phuongtien=2" onclick="selectItem1('Tàu hoả')">Tàu hoả</a></li>
                 <li><a class="dropdown-item" href="adminDanhSachChuyenDi.php?phuongtien=3" onclick="selectItem1('Xe khách')">Xe khách</a></li>
             </ul>
@@ -46,7 +46,6 @@
                     <th>Điểm khởi hành</th>
                     <th>Điểm đến</th>
                     <th>Ngày đi</th>
-                    <th>Ngày khứ hồi</th>
                     <th>Số hành khách</th>
                     <th>Giá vé</th>
                 </tr>
@@ -71,12 +70,11 @@
                 while ($row = mysqli_fetch_object($result)) {
                     $stt_hang++;
                     $id[$stt_hang] = $row->id;
-                    $diemkhoihanh[$stt_hang] = $row->diemkhoihanh;
-                    $diemden[$stt_hang] = $row->diemden;
-                    $sohanhkhach[$stt_hang] = $row->sohanhkhach;
-                    $ngaydi[$stt_hang] = $row->ngaydi;
-                    $ngaykhuhoi[$stt_hang] = $row->ngaykhuhoi;
-                    $khuhoi[$stt_hang] = $row->khuhoi;
+                    $diemKhoiHanh[$stt_hang] = $row->diemKhoiHanh;
+                    $diemDen[$stt_hang] = $row->diemDen;
+                    $ngayDi[$stt_hang] = $row->ngayDi;
+                    $soHanhKhach[$stt_hang] = $row->soHanhKhach;
+                    $giaVe[$stt_hang] = $row->giaVe;
                 }
                 $tong_bg = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM $table WHERE phuongTien = $phuongtien"));
 
@@ -91,13 +89,12 @@
                 ?>
                     <tr>
                         <td><?php echo $i ?></td>
-                        <td><?php echo $diemkhoihanh[$i] ?></td>
-                        <td><?php echo $diemden[$i] ?></td>
-                        <td><?php echo $sohanhkhach[$i] ?></td>
-                        <td><?php echo $ngaydi[$i] ?></td>
-                        <td><?php echo $ngaykhuhoi[$i] ?></td>
-                        <td><?php echo $khuhoi[$i] ?></td>
-                        <td> <a href="controllerXoaChuyenDi.php"><i class="fa-solid fa-edit"></i></a> </td>
+                        <td><?php echo $diemKhoiHanh[$i] ?></td>
+                        <td><?php echo $diemDen[$i] ?></td>
+                        <td><?php echo $ngayDi[$i] ?></td>
+                        <td><?php echo $soHanhKhach[$i] ?></td>
+                        <td><?php echo $giaVe[$i] ?></td>
+                        <td> <a href="suaChuyenDi.php?id=<?php echo $id[$i] ?>"><i class="fa-solid fa-edit"></i></a> </td>
                         <td> <a href="controllerXoaChuyenDi.php?id=<?php echo $id[$i] ?>"><i class="fa-solid fa-trash"></i></a> </td>
                     </tr>
                 <?php
