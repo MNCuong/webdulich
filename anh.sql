@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 14, 2023 lúc 09:31 PM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.0.28
+-- Host: 127.0.0.1
+-- Generation Time: Sep 17, 2023 at 11:23 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `anh`
+-- Database: `anh`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `acc`
+-- Table structure for table `acc`
 --
 
 CREATE TABLE `acc` (
@@ -37,20 +37,19 @@ CREATE TABLE `acc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `acc`
+-- Dumping data for table `acc`
 --
 
 INSERT INTO `acc` (`id`, `username`, `password`, `email`, `full_name`, `role`) VALUES
-(3, 'cuongll', '912003', 'cuongll912003@gmail.com', 'Mai Ngọc Cường', 'Admin'),
+(1, '1', '1', 'cuongll912003@gmail.com', '1', 'Admin'),
+(2, '2', '2', 'hl@gmail.com', '2', 'User'),
 (4, 'hanh0902', '09022003', 'hanh0902@gmail.com', 'Lưu Thị Hạnh', 'Admin'),
-(9, 'halinh2202', '123456', 'hl@gmail.com', '1', 'User'),
-(10, 'hanhluu', '123456', 'hl@gmail.com', '1', 'User'),
-(22, '1', '1', 'c@gmail.com', 'mnc', '');
+(10, 'hanhluu', '123456', 'hl@gmail.com', '1', 'User');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `anhhh`
+-- Table structure for table `anhhh`
 --
 
 CREATE TABLE `anhhh` (
@@ -62,7 +61,7 @@ CREATE TABLE `anhhh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `anhhh`
+-- Dumping data for table `anhhh`
 --
 
 INSERT INTO `anhhh` (`id`, `price`, `description`, `anhphong`, `tinhtrang`) VALUES
@@ -72,7 +71,7 @@ INSERT INTO `anhhh` (`id`, `price`, `description`, `anhphong`, `tinhtrang`) VALU
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `chuyendi`
+-- Table structure for table `chuyendi`
 --
 
 CREATE TABLE `chuyendi` (
@@ -82,13 +81,22 @@ CREATE TABLE `chuyendi` (
   `sohanhkhach` int(11) NOT NULL,
   `ngaydi` varchar(255) NOT NULL,
   `ngaykhuhoi` varchar(255) NOT NULL,
-  `khuhoi` varchar(255) NOT NULL
+  `khuhoi` varchar(255) NOT NULL,
+  `phuongTien` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chuyendi`
+--
+
+INSERT INTO `chuyendi` (`id`, `diemkhoihanh`, `diemden`, `sohanhkhach`, `ngaydi`, `ngaykhuhoi`, `khuhoi`, `phuongTien`) VALUES
+(1, '1', '1', 1, '1', '1', '1', 1),
+(2, '2', '2', 2, '2', '2', '2', 2);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `phuongtien`
+-- Table structure for table `phuongtien`
 --
 
 CREATE TABLE `phuongtien` (
@@ -97,7 +105,7 @@ CREATE TABLE `phuongtien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `phuongtien`
+-- Dumping data for table `phuongtien`
 --
 
 INSERT INTO `phuongtien` (`id`, `phuongtien`) VALUES
@@ -106,60 +114,71 @@ INSERT INTO `phuongtien` (`id`, `phuongtien`) VALUES
 (3, 'Xe khách');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `acc`
+-- Indexes for table `acc`
 --
 ALTER TABLE `acc`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `anhhh`
+-- Indexes for table `anhhh`
 --
 ALTER TABLE `anhhh`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `chuyendi`
+-- Indexes for table `chuyendi`
 --
 ALTER TABLE `chuyendi`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `phuongTien` (`phuongTien`);
 
 --
--- Chỉ mục cho bảng `phuongtien`
+-- Indexes for table `phuongtien`
 --
 ALTER TABLE `phuongtien`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `acc`
+-- AUTO_INCREMENT for table `acc`
 --
 ALTER TABLE `acc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT cho bảng `anhhh`
+-- AUTO_INCREMENT for table `anhhh`
 --
 ALTER TABLE `anhhh`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
--- AUTO_INCREMENT cho bảng `chuyendi`
+-- AUTO_INCREMENT for table `chuyendi`
 --
 ALTER TABLE `chuyendi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `phuongtien`
+-- AUTO_INCREMENT for table `phuongtien`
 --
 ALTER TABLE `phuongtien`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `chuyendi`
+--
+ALTER TABLE `chuyendi`
+  ADD CONSTRAINT `chuyendi_ibfk_1` FOREIGN KEY (`phuongTien`) REFERENCES `phuongtien` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
