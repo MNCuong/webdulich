@@ -55,13 +55,14 @@
 
     <div class="container" style="border-style: solid; border-width: 1px; border-radius: 10px;">
         <div class="row text-uppercase text-center fs-1">
-            <p>Chuyến đi</p>
+            <p>Sửa Chuyến đi</p>
         </div>
 
         <form action="controllerSuaChuyenDi.php?id=<?php echo $id ?>" method="post">
             <div class="row">
                 <div class="col">
-                    <select name="phuongTien" onchange="selectPhuongTien()" value="2">
+                    <span class="input-group-text">Phương tiện</span>
+                    <select name="phuongTien" onchange="selectPhuongTien()" class="form-control">
                         <option value="1" <?php if ($phuongTien == '1') echo ("selected") ?>>Máy bay</option>
                         <option value="2" <?php if ($phuongTien == '2') echo ("selected") ?>>Tàu hoả</option>
                         <option value="3" <?php if ($phuongTien == '3') echo ("selected") ?>>Xe khách</option>

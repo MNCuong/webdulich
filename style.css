@@ -55,3 +55,11 @@ form {
 	border-radius: 10px;
 	border-color: cornflowerblue;
 }
+
+.select1 {
+	padding: 10px;
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+	border-radius: 5px;
+	border-color: cornflowerblue;
+}

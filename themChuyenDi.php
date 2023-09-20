@@ -25,6 +25,7 @@
             justify-content: center;
             align-items: center;
         }
+
     </style>
 </head>
 
@@ -37,19 +38,18 @@
 
     <div class="container" style="border-style: solid; border-width: 1px; border-radius: 10px;">
         <div class="row text-uppercase text-center fs-1">
-            <p>Chuyến đi</p>
+            <p>Thêm Chuyến đi</p>
         </div>
 
         <form action="controllerThemChuyenDi.php" method="post">
             <div class="row">
                 <div class="col">
-                    <div class="dropdown">
-                        <select name="phuongTien" onchange="selectPhuongTien()">
-                            <option value="1">Máy bay</option>
-                            <option value="2">Tàu hoả</option>
-                            <option value="3">Xe khách</option>
-                        </select>
-                    </div>
+                    <span class="input-group-text">Phương tiện</span>
+                    <select name="phuongTien" onchange="selectPhuongTien()" class="form-control">
+                        <option value="1">Máy bay</option>
+                        <option value="2">Tàu hoả</option>
+                        <option value="3">Xe khách</option>
+                    </select>
                 </div>
                 <div class="col">
                     <div class="input-group mb-3">
