@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>Danh sach phong</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 	<style>
 	
 h1 {
@@ -57,7 +59,7 @@ img:hover {
     border-color: #FF5733; 
 }
 
-a[href="addphong.php"] button,a[href="indexadmin.php"] button {
+a[href="addphong.php"] button,a[href="indexadmin.php"] button, button[type="submit"] {
 	background-color: rgba(19,99,222,1.00);
 	color: white;
     padding: 10px 20px;
@@ -68,8 +70,10 @@ a[href="addphong.php"] button,a[href="indexadmin.php"] button {
     transition: background-color 0.3s ease-in-out;
     cursor: pointer;
 }
-
-a[href="addphong.php"] button:hover,a[href="indexadmin.php"] button:hover {
+	.timkiembutton{
+			margin: 8px 0 ;
+		}
+a[href="addphong.php"] button:hover,a[href="indexadmin.php"] button:hover, button[type="submit"]:hover {
     background-color: #E4482D;
 	
 }
@@ -87,34 +91,63 @@ ul {
 		ul li a {
 			text-decoration: none;
 			color: #333;
-			background: linear-gradient(135deg, #FF5733, #FF7044); /* Gradient background for pagination links */
+			background: linear-gradient(135deg, #FF5733, #FF7044);
 			padding: 5px 10px;
 			border-radius: 5px;
 			transition: background 0.3s ease-in-out;
 		}
 
 		ul li a:hover {
-			background: linear-gradient(135deg, #FF7044, #FF5733); /* Reverse gradient on hover */
+			background: linear-gradient(135deg, #FF7044, #FF5733);
 			color: white;
 			
 		}
 		i{
 			color: black;
 		}
+		.container{
+			display: flex;
+			width: 70%;
+			margin: 0 auto;
+			justify-content: space-between;
+
+		}
+		.overview{
+			border: 3px solid black;
+			width: 50%;
+			border-radius: 4px;
+			padding: 4px;
+			background-color: aquamarine;
+			
+		}
+		
+		
+		.timkiem{
+			display: flex;
+			width: 100%;
+			margin: 0 auto;
+		}
+		.main{
+			width: 100%;
+		}
+		.timkiembutton{
+			width: 100%;
+			padding: 12px;
+			border-radius: 24px;
+			font-size: 16px;
+			border: 1px solid rgba(208,205,205,1.00);
+		}
+
 	</style>
 
 
 </head>
 
 <body>
-	<div class="nut" align="center">			
-		<a href="addphong.php" ><button>Thêm phòng</button></a>
-		<a href="indexadmin.php" ><button>Trở về</button></a>
-	</div>
 	<?php
 	$sobg=4;
 		$db="anh";
-		$conn=new mysqli("localhost","root","",$db) or die ("Không connect đc với máy chủ");//tạo kết nối với server
+		$conn=new mysqli("localhost","root","",$db) or die ("Không connect đc với máy chủ");
 		$current_page = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
 
 		// Tính toán OFFSET (độ lệch)
@@ -126,14 +159,21 @@ ul {
 			{
 			
 			$stt_hang++;
-			$id_hang[$stt_hang]=$row->id;
+			$id_hang[$stt_hang]=$row->id_phong;
 			$price0[$stt_hang]=$row->price;
 			$description0[$stt_hang]=$row->description;
 			$anhphong[$stt_hang]=$row->anhphong;
 			$tinhtrang[$stt_hang]=$row->tinhtrang;
+			$diadiem[$stt_hang]=$row->diadiem;
+			$loaiphong[$stt_hang]=$row->loaiphong;
 			
 			
 		}
+	 
+
+
+	$tong_controng = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `anhhh` WHERE `tinhtrang`='Còn trống'"));
+	$tong_dadat = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `anhhh` WHERE `tinhtrang`='Đã đặt' "));
 	$tong_bg = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `anhhh`"));
 	$soluongtrang = ceil($tong_bg / $sobg);
 	mysqli_close($conn);
@@ -144,19 +184,50 @@ ul {
 	
 	?>
 	
+	<br>
+	<div class="container">
+		<div class="overview">
+			<p>Còn trống: <?php echo($tong_controng)?> phòng</p>
+			<p>Đã đặt: <?php echo($tong_dadat)?> phòng</p>
+			<p>Tổng phòng: <?php echo($tong_bg)?> phòng</p> 
+		</div>
+		<div class="nut" align="center">			
+			<div class="buttonnut">
+				<a href="addphong.php" ><button>Thêm phòng</button></a>
+				<a href="indexadmin.php" ><button>Trở về</button></a>
+			</div>
+		<div class="timkiem">
+		  <div class="main">
+			<input type="search" name="search" class="timkiembutton" id="searchInput" placeholder="Nhập từ khóa tìm kiếm">
+			<button type="button" class="search-button" id="searchButton">
+			  <i class="fa-solid fa-magnifying-glass" style="color: #f7f7f8;"></i>
+			  Tìm kiếm
+			</button>
+		  </div>
+		</div>
+	<div id="searchResults">
+  <!-- Bảng kết quả tìm kiếm sẽ được hiển thị ở đây -->
+	</div>
+		
+		</div>
+	</div>
+	
+	
 	
 	<table width="400" align="center" border="1">
 	  <tbody>
 		<tr>
-		  <td colspan="6" align=""><h3>Danh sách phòng</h3></td>
+		  <td colspan="8" style="height: 0px;"><h3>Danh sách phòng</h3></td>
 		</tr>
 		<tr align="center">
-		  <td width="38">STT</td>
-		  <td width="83">Giá</td>
-		  <td width="83">Mô tả</td>
-		  <td width="44" height="100px">Hình ảnh</td>
-		  <td width="83" >Tình trạng</td>
-		  <td width="150">Chức năng</td>
+		  <td style="height: 30px;" width="38">STT</td>
+		  <td style="height: 30px;" width="38">Loại phòng</td>
+		  <td style="height: 30px;" width="83">Giá</td>
+		  <td style="height: 30px;" width="83">Mô tả</td>
+		  <td style="height: 30px;" width="44" height="100px">Hình ảnh</td>
+		  <td style="height: 30px;" width="83" >Tình trạng</td>
+		  <td style="height: 30px;" width="83" >Địa điểm</td>
+		  <td style="height: 30px;" width="150">Chức năng</td>
 		</tr>
 		  <?php
 			  for ($i = ($current_page - 1) * $sobg +1; $i <= ($current_page - 1) * $sobg +$sobg ; $i++)
@@ -167,21 +238,23 @@ ul {
 			?>
 		<tr>
 		  <td><?php echo $i;?></td>
+		  <td><?php echo $loaiphong[$i];?></td>
 		  <td><?php echo $price0[$i]?></td>
 		  <td><?php echo $description0[$i]?></td>
 		  <td><img src="images/<?php echo $anhphong[$i]?>" width="100px" height="100px" alt="Anh tro"></td>
 		  <td><?php echo $tinhtrang[$i]?></td>
+		  <td><?php echo $diadiem[$i]?></td>
 
 		  <td>
-				<a href="form_suaphong.php?id=<?php echo $id_hang[$i]?>" name="edit"> Edit</a>/
-				<a href="xoa_phongcontroller.php?id=<?php echo $id_hang[$i]?>" name="delete">Delete </a>
+				<a href="form_suaphong.php?id_phong=<?php echo $id_hang[$i]?>" name="edit"> Edit</a>/
+				<a href="xoa_phongcontroller.php?id_phong=<?php echo $id_hang[$i]?>" name="delete">Delete </a>
 			</td>
 		</tr>
 		  <?php  
 		  }
 		  ?>
 		<tr>
-		  <td colspan="6" align="right">Có tổng số <?php echo $tong_bg?> hãng sản xuất</td>
+		  <td colspan="8" align="right">Có tổng số <?php echo $tong_bg?> hãng sản xuất</td>
 		</tr>
 	  </tbody>
 	</table>
@@ -193,5 +266,27 @@ ul {
 			?>
 		</ul>
 </body>
-	
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+		  var searchInput = document.getElementById("searchInput");
+		  var searchButton = document.getElementById("searchButton");
+		  var searchResults = document.getElementById("searchResults");
+		  var thongtintaikhoan = document.getElementById("thongtintaikhoan");
+
+		  searchButton.addEventListener("click", function () {
+			var searchTerm = searchInput.value.trim();
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "timkiemphong_controller.php", true);
+			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhr.onreadystatechange = function () {
+			  if (xhr.readyState === 4 && xhr.status === 200) {
+				var searchResultHTML = xhr.responseText;
+				searchResults.innerHTML = searchResultHTML;
+				thongtintaikhoan.style.display="none";
+			  }
+			};
+			xhr.send("search=" + searchTerm);
+		  });
+		});
+	</script>
 </html>

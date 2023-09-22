@@ -3,17 +3,20 @@
 <head>
 <meta charset="utf-8">
 <title>Sửa phòng</title>
+	<script src="ckeditor/ckeditor.js"></script>
 
 	<?php
-			$id_hang0=$_REQUEST["id"];
+			$id_hang0=$_REQUEST["id_phong"];
 			$db="anh";
 			$conn=new mysqli("localhost","root","",$db) or die ("Không connect đc với máy chủ");//tạo kết nối với server
-			$select_hangxs="Select * from `anhhh` where id=$id_hang0";
+			$select_hangxs="Select * from `anhhh` where id_phong=$id_hang0";
 			$result_se_hang=mysqli_query($conn,$select_hangxs);
 			$row=mysqli_fetch_object($result_se_hang);
-				$id_hang0=$row->id;
+				$id_hang0=$row->id_phong;
 				$price=$row->price;
 				$description=$row->description;
+				$tinhtrang=$row->tinhtrang;
+				$diadiem=$row->diadiem;
 				
 
 	?>
@@ -52,7 +55,8 @@
         }
         input[type="number"],
         input[type="text"],
-        input[type="file"] {
+        input[type="file"],
+		select{
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
@@ -76,7 +80,7 @@
 <body>
     <div class="container">
         <h1>Sửa Phòng</h1>
-        <form action="sua_phongcontroller.php?id=<?php echo $id_hang0?>" method="POST" enctype="multipart/form-data">
+        <form action="sua_phongcontroller.php?id_phong=<?php echo $id_hang0?>" method="POST" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>Giá</td>
@@ -84,13 +88,45 @@
                 </tr>
                 <tr>
                     <td>Mô tả</td>
-                    <td><input type="text" name="description"  value="<?php echo $description?>" ></td>
+                    <td><textarea name="description" id="description"><?php echo $description?></textarea> </td>
                 </tr>
                 
 				<tr>
                     <td>Ảnh</td>
                     <td><input type="file" name="anhphongmoi" ></td>
                 </tr>
+				<tr>
+                    <td>Tình trạng</td>
+                    <td><input type="text" name="tinhtrang"  value="<?php echo $tinhtrang?>" ></td>
+                </tr>
+				
+				<tr>
+					<?php 
+				$db="anh";
+				$conn=new mysqli("localhost","root","",$db) or die ("Không connect đc với máy chủ");
+				$query="SELECT * FROM tinhthanh";
+				$result=$conn->query($query);
+				$stt_hang=0;
+				while($row = mysqli_fetch_object($result))
+				{
+
+				$stt_hang++;
+				$id_tinh[$stt_hang]=$row->id_tinh;
+				$tinhthanh[$stt_hang]=$row->tinhthanh;
+				}
+					$tong_bg = mysqli_num_rows(mysqli_query($conn, $query));
+
+					?>
+					<td>Địa điểm</td>
+                    <td><select name="diadiem" id="">
+						<?php for($i=1;$i<=$tong_bg;$i++){
+						?>
+							<option name="diadiem" value="<?php echo $tinhthanh[$i] ?>"><?php echo $tinhthanh[$i]?></option>
+						<?php
+						}?>
+						</select></td>
+				</tr>
+                
                 <tr>
                     <td></td>
                     <td><input type="submit" value="Lưu Thay Đổi"></td>
@@ -99,4 +135,6 @@
         </form>
     </div>
 </body>
+	<script>
+	CKEDITOR.replace('description');</script>
 </html>

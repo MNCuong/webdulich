@@ -18,7 +18,7 @@ $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
     echo "Tài khoản đã tồn tại.";
 } else {
-    $sql_add = "INSERT INTO `acc`(`username`, `password`, `email`, `full_name`) VALUES ('$username','$password','$email','$full_name')";
+    $sql_add = "INSERT INTO `acc`(`username`, `password`, `email`, `full_name`,`role`,`trangthai`) VALUES ('$username','$password','$email','$full_name','User','Chưa giao dịch')";
     mysqli_query($conn, $sql_add);
     header("Location: dangnhapclient.php");
 }

@@ -111,12 +111,8 @@
             <hr width="100%">
             <div class="menu">
                 <ul> 
-                    <li class="dropdown">
+                    <li >
                         <a href="#">Quản lý tài khoản</a>
-                        <div class="dropdown-content">
-                            <a href="#">Tài khoản admin</a>
-                            <a href="#">Tài khoản người dùng</a>
-                        </div>
                     </li>
                     <li>
                         <a href="#">Di chuyển</a>

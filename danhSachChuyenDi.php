@@ -17,8 +17,8 @@
 </head>
 
 <body>
-    <!-- <?php include './header.php'; ?> -->
-    <div class="container" style="margin-top: 100px;">
+     <?php include './header.php'; ?> 
+    <div class="container" style=" display: flex;">
         <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
             <!-- Indicators/dots -->
