@@ -2,10 +2,11 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 21, 2023 lúc 12:58 PM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.0.28
+
+-- Host: 127.0.0.1
+-- Generation Time: Sep 22, 2023 at 02:00 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,9 +42,10 @@ CREATE TABLE `acc` (
 -- Đang đổ dữ liệu cho bảng `acc`
 --
 
-INSERT INTO `acc` (`id`, `username`, `password`, `email`, `full_name`, `role`, `trangthai`) VALUES
-(3, 'cuongll', '912003', 'cuongll912003@gmail.com', 'Mai Ngọc Cường', 'User', '<span style=\"color: #00CD00;\">Đang giao dịch</span>'),
-(32, 'hanhluu', '123456', 'hanh1902@gmail.com', 'Lưu Thị Hạnh', 'User', 'Chưa giao dịch');
+INSERT INTO `acc` (`id`, `username`, `password`, `email`, `full_name`, `role`) VALUES
+(2, '2', '2', 'hl@gmail.com', '2', 'User'),
+(10, 'hanhluu', '123456', 'hl@gmail.com', '1', 'User'),
+(23, '3', '3', '3@3', '3', '');
 
 -- --------------------------------------------------------
 
@@ -81,22 +83,23 @@ INSERT INTO `anhhh` (`id_phong`, `loaiphong`, `price`, `description`, `anhphong`
 
 CREATE TABLE `chuyendi` (
   `id` int(11) NOT NULL,
-  `diemkhoihanh` varchar(255) NOT NULL,
-  `diemden` varchar(255) NOT NULL,
-  `sohanhkhach` int(11) NOT NULL,
-  `ngaydi` varchar(255) NOT NULL,
-  `ngaykhuhoi` varchar(255) NOT NULL,
-  `khuhoi` varchar(255) NOT NULL,
-  `phuongTien` int(11) NOT NULL
+  `phuongTien` int(11) NOT NULL,
+  `diemKhoiHanh` varchar(255) NOT NULL,
+  `diemDen` varchar(255) NOT NULL,
+  `ngayDi` varchar(255) NOT NULL,
+  `soHanhKhach` int(11) NOT NULL,
+  `giaVe` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `chuyendi`
 --
 
-INSERT INTO `chuyendi` (`id`, `diemkhoihanh`, `diemden`, `sohanhkhach`, `ngaydi`, `ngaykhuhoi`, `khuhoi`, `phuongTien`) VALUES
-(1, '1', '1', 1, '1', '1', '1', 1),
-(2, '2', '2', 2, '2', '2', '2', 2);
+INSERT INTO `chuyendi` (`id`, `phuongTien`, `diemKhoiHanh`, `diemDen`, `ngayDi`, `soHanhKhach`, `giaVe`) VALUES
+(40, 1, 'Hà Nội', 'Hạ Long', '2023-09-19', 100, 1000000),
+(48, 3, 'Cao Bằng', 'Sài Gòn', '', 100, 500000),
+(53, 3, 'Cao Bằng', 'Sài Gòn', '', 100, 500000),
+(55, 2, '2', '2', '', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -345,7 +348,8 @@ ALTER TABLE `tinhthanh`
 -- AUTO_INCREMENT cho bảng `acc`
 --
 ALTER TABLE `acc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `anhhh`
@@ -357,7 +361,7 @@ ALTER TABLE `anhhh`
 -- AUTO_INCREMENT cho bảng `chuyendi`
 --
 ALTER TABLE `chuyendi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT cho bảng `datphong`

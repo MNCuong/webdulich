@@ -29,23 +29,55 @@
 </head>
 
 <body>
-    <div class="container marginTop" style="border-style: solid; border-width: 1px; border-radius: 10px;">
-        <form action="" method="post">
+    <?php
+    $id = $_REQUEST["id"];
+    $db = "anh";
+    $table = "chuyendi";
+    $conn = new mysqli("localhost", "root", "", $db) or die("Không connect đc với máy chủ");
+    $select = "SELECT * FROM $table WHERE id=$id";
+    $result_se_hang = mysqli_query($conn, $select);
+    $row = mysqli_fetch_object($result_se_hang);
+
+    $id = $row->id;
+    $phuongTien = $row->phuongTien;
+    $diemKhoiHanh = $row->diemKhoiHanh;
+    $diemDen = $row->diemDen;
+    $ngayDi = $row->ngayDi;
+    $soHanhKhach = $row->soHanhKhach;
+    $giaVe = $row->giaVe;
+    ?>
+
+    <div class="container d-flex marginTop">
+        <form action="adminDanhSachChuyenDi.php" method="post">
+            <button type="submit" class="button">Danh sách chuyến chuyến đi</button>
+        </form>
+    </div><br>
+
+    <div class="container" style="border-style: solid; border-width: 1px; border-radius: 10px;">
+        <div class="row text-uppercase text-center fs-1">
+            <p>Sửa Chuyến đi</p>
+        </div>
+
+        <form action="controllerSuaChuyenDi.php?id=<?php echo $id ?>" method="post">
             <div class="row">
                 <div class="col">
                     <span class="input-group-text">Phương tiện</span>
-                    <div class="form-control">Máy bay</div>
+                    <select name="phuongTien" onchange="selectPhuongTien()" class="form-control">
+                        <option value="1" <?php if ($phuongTien == '1') echo ("selected") ?>>Máy bay</option>
+                        <option value="2" <?php if ($phuongTien == '2') echo ("selected") ?>>Tàu hoả</option>
+                        <option value="3" <?php if ($phuongTien == '3') echo ("selected") ?>>Xe khách</option>
+                    </select>
                 </div>
                 <div class="col">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Điểm khởi hành</span>
-                        <input type="text" class="form-control" name="diemKhoiHanh">
+                        <input type="text" name="diemKhoiHanh" value="<?php echo $diemKhoiHanh ?>" class="form-control">
                     </div>
                 </div>
                 <div class="col">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Điểm đến</span>
-                        <input type="text" class="form-control" name="diemDen">
+                        <input type="text" name="diemDen" value="<?php echo $diemDen ?>" class="form-control">
                     </div>
                 </div>
             </div>
@@ -54,26 +86,26 @@
                 <div class="col">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Ngày đi</span>
-                        <input type="date" class="form-control" name="ngayDi">
+                        <input type="date" name="ngayDi" value="<?php echo $ngayDi ?>" class="form-control">
                     </div>
                 </div>
                 <div class="col">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Số hành khách</span>
-                        <input type="number" class="form-control" name="soHanhKhach">
+                        <input type="number" name="soHanhKhach" value="<?php echo $soHanhKhach ?>" class="form-control">
                     </div>
                 </div>
                 <div class="col ">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Giá vé</span>
-                        <input type="number" class="form-control" name="giaVe">
+                        <input type="number" name="giaVe" value="<?php echo $giaVe ?>" class="form-control">
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col d-flex justify-content-center">
-                    <button type="submit" class="button">Chọn</button>
+                    <button type="submit" class="button">Lưu chuyến đi</button>
                 </div>
             </div>
     </div>

@@ -25,16 +25,31 @@
             justify-content: center;
             align-items: center;
         }
+
     </style>
 </head>
 
 <body>
-    <div class="container marginTop" style="border-style: solid; border-width: 1px; border-radius: 10px;">
-        <form action="" method="post">
+    <div class="container d-flex marginTop">
+        <form action="adminDanhSachChuyenDi.php" method="post">
+            <button type="submit" class="button">Danh sách chuyến chuyến đi</button>
+        </form>
+    </div><br>
+
+    <div class="container" style="border-style: solid; border-width: 1px; border-radius: 10px;">
+        <div class="row text-uppercase text-center fs-1">
+            <p>Thêm Chuyến đi</p>
+        </div>
+
+        <form action="controllerThemChuyenDi.php" method="post">
             <div class="row">
                 <div class="col">
                     <span class="input-group-text">Phương tiện</span>
-                    <div class="form-control">Máy bay</div>
+                    <select name="phuongTien" onchange="selectPhuongTien()" class="form-control">
+                        <option value="1">Máy bay</option>
+                        <option value="2">Tàu hoả</option>
+                        <option value="3">Xe khách</option>
+                    </select>
                 </div>
                 <div class="col">
                     <div class="input-group mb-3">
@@ -73,7 +88,7 @@
 
             <div class="row">
                 <div class="col d-flex justify-content-center">
-                    <button type="submit" class="button">Chọn</button>
+                    <button type="submit" class="button">Thêm chuyến đi</button>
                 </div>
             </div>
     </div>
