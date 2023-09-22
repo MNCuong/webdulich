@@ -36,6 +36,17 @@
                 $seenPoints[$diemKhoiHanh] = true;
             }
         }
+        ?>
+    </datalist>
+    <datalist id="diemDen">
+        <?php while ($row = mysqli_fetch_assoc($rows)) {
+            $diemDen = $row['diemDen'];
+            if (!isset($seenPoints[$diemDen])) { ?>
+                <option value="<?php echo $diemDen ?>"><?php echo $diemDen ?></option>
+        <?php
+                $seenPoints[$diemDen] = true;
+            }
+        }
         mysqli_close($conn); ?>
     </datalist>
 
