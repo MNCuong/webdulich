@@ -65,49 +65,47 @@
         }
     </style>
 </head>
+	<?php
+       if (isset($_GET['id_phong']) || isset($_GET['diadiem'])) {
+		$phongId = $_GET['id_phong'];
+		   $diadiem= $_GET['diadiem'];
+		
+		
+		} else {
+			echo "Không tìm thấy thông tin phòng";
+		}
+	?>
 <body>
     <div class="confirmation-form">
         <h1>Xác Nhận Đặt Phòng</h1>
-        <form method="post" action="xacnhandatphong_controller.php">
+        <form action="xacnhandatphong_controller.php?id_phong=<?php echo $phongId?>&diadiem=<?php echo $diadiem?>" method="post" onsubmit="return validateForm();">
+			
             <label for="tenkhach">Tên khách hàng:</label>
-            <input type="text" id="tenkhach" name="tenkhach" required>
+            <input type="text" id="tenkhach" name="tenkhach"  required>
             <label for="ngayden">Ngày đến:</label>
-            <input type="date" id="ngayden" name="ngayden" required>
+            <input type="date" id="ngayden" id="ngayden" name="ngayden" required>
             <label for="ngaydi">Ngày đi:</label>
-            <input type="date" id="ngaydi" name="ngaydi" required>
-            <button type="submit">Xác nhận</button>
+            <input type="date" id="ngaydi" id="ngayden" name="ngaydi" required>
+			<p> Địa điểm: <?php echo($diadiem)?></p>
+	        <button type="submit">Xác nhận</button>
         </form>
     </div>
-    <div class="confirmation-message">
-        <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $tenkhach = $_POST["tenkhach"];
-            $ngayden = $_POST["ngayden"];
-            $ngaydi = $_POST["ngaydi"];
-
-            $host = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "anh";
-
-            $conn = new mysqli($host, $username, $password, $database);
-
-            if ($conn->connect_error) {
-                die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
-            }
-
-            // Chèn thông tin đặt phòng vào cơ sở dữ liệu
-            $sql = "INSERT INTO datphong (tenkhach, ngayden, ngaydi) VALUES ('$tenkhach', '$ngayden', '$ngaydi')";
-            
-            if ($conn->query($sql) === TRUE) {
-                echo "Đặt phòng thành công!";
-            } else {
-                echo "Có lỗi xảy ra trong quá trình đặt phòng: " . $conn->error;
-            }
-
-            $conn->close();
-        }
-        ?>
-    </div>
+   
 </body>
+	
+	<script>
+	function validateForm() {
+		var ngayden = document.getElementById("ngayden").value;
+		var ngaydi = document.getElementById("ngaydi").value;
+
+		if (ngayden > ngaydi) {
+			alert("Ngày đi phải sau ngày đến.");
+			return false;
+		}
+
+		return true;
+	}
+	</script>
+
+	
 </html>

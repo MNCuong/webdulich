@@ -1,12 +1,13 @@
 <title>Di chuyển</title>
-<?php
-include './header.php';
+<?php 
+		include './header.php';
 ?>
 <br><br>
-<?php
-include './timChuyenDi.php';
+<?php 
+		include './TimChuyenDi.php';
 ?>
+
 <br><br>
-<?php
-include './footer.php';
+<?php 
+		include './footer.php';
 ?>

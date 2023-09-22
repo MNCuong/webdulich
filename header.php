@@ -1,16 +1,9 @@
 <?php
-session_start(); // Bắt đầu phiên làm việc
-
-
+session_name('client');
+session_start(); 
 ?>
 
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-	
+
 <style>
     body {
         margin: 0;
@@ -64,24 +57,32 @@ session_start(); // Bắt đầu phiên làm việc
     .wrapper {
         position: fixed;
         width: 100%;
-        z-index: 1;
+        z-index: 2;
+		display: flex;
+		flex-direction: column;
     }
-    .header {
-    }
+
+
 </style>
-</head>
 
 <body>
     <div class="wrapper">
         <div class="header">
             <div class="child1">
-                <div class="child11"><img src="pic/OIP.jpg" alt=""></div>
-                
+                <div class="child11"><img src="pic/logodaidien.png" alt=""></div>
+                <div class="child11" style="width: 50%;">
+					<?php
+                        if(isset($_SESSION['userclient'])) {
+							    ?>
+						<marquee behavior="scroll" direction="right" scrollamount="10"><?php echo "Chào mừng " . $_SESSION['userclient'] . "!<br>";?></marquee>
+					<?php
+						}?>
+				
+				</div>
                 <div class="child11">
                     <?php
-                        if(isset($_SESSION['user'])) {
-                            // Nếu đã đăng nhập, hiển thị nút đăng xuất
-							    echo "Chào mừng " . $_SESSION['user'] . "!<br>";
+                        if(isset($_SESSION['userclient'])) {
+							   
 
                             echo '<a href="dangxuat_controller.php"><button>Đăng xuất</button></a>';
                         } else {
@@ -93,15 +94,18 @@ session_start(); // Bắt đầu phiên làm việc
                 </div>
             </div>
             <div class="child2">
-                <div class="menu">
+                 <div class="menu">
                     <a href="index.php">Home</a>
                     <a href="index_chuyendi.php">Di chuyển</a>
                     <a href="danhsachphongks.php">Đặt phòng</a>
-                    <a href="">Hoạt động và giải trí</a>
+                    <a href="lichsudatphong.php">Lịch sử đặt phòng</a>
+                    <a href="index_trangchudulich.php">Hoạt động và giải trí</a>
                 </div>
             </div>
             
         </div>
     </div>
 </body>
+	
+	
 </html>
