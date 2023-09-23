@@ -95,7 +95,7 @@ session_start(); // Bắt đầu phiên làm việc
             <div class="child2">
                 <div class="menu">
                     <a href="index.php">Home</a>
-                    <a href="index_chuyendi.php">Di chuyển</a>
+                    <a href="index_muaVe.php">Di chuyển</a>
                     <a href="danhsachphongks.php">Đặt phòng</a>
                     <a href="">Hoạt động và giải trí</a>
                 </div>
