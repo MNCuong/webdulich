@@ -1,9 +1,9 @@
 
 	<?php 
 	$db="anh";
-	$id_hang0=$_REQUEST["id"];
+	$id_hang0=$_REQUEST["id_phong"];
 	$conn=new mysqli("localhost","root","",$db) or die ("Không connect đc với máy chủ");
-	$sql_delete= "DELETE FROM anhhh WHERE `anhhh`.`id` = $id_hang0";
+	$sql_delete= "DELETE FROM anhhh WHERE `anhhh`.`id_phong` = $id_hang0";
 	mysqli_query($conn, $sql_delete);
 	//Sau khi xóa sẽ trở lại trang danh sách
 	header("Location: danhsachphongsauadd.php");

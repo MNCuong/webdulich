@@ -3,17 +3,16 @@
 	$db = 'anh';
 	$conn = new mysqli('localhost', 'root', '', $db) or die('Không kết nối được với máy chủ');
 
-	$sql_query = "SELECT * FROM acc WHERE `username` LIKE '%$inputsearch%' OR `full_name` LIKE '%$inputsearch%' OR `email` LIKE '%$inputsearch%' OR `role` LIKE '%$inputsearch%'";
+	$sql_query = "SELECT * FROM acc WHERE `username` LIKE '%$inputsearch%' OR `full_name` LIKE '%$inputsearch%' OR `email` LIKE '%$inputsearch%' OR `trangthai` LIKE '%$inputsearch%' OR `role` LIKE '%$inputsearch%'";
 
 	$result = mysqli_query($conn, $sql_query);
 
 	if (mysqli_num_rows($result) > 0) {
 		echo '<table align="center" border=1>';
 		echo '<tr>';
-		echo '<td colspan="8" align="center">Kết quả tìm kiếm</td>';
+		echo '<td colspan="8" align="center">Danh sách tài khoản</td>';
 		echo '</tr>';
 		echo '<tr align="center">';
-		echo '<td width="38">&nbsp;</td>';
 		echo '<td width="38">STT</td>';
 		echo '<td width="83">Username</td>';
 		echo '<td width="83">Password</td>';
@@ -35,7 +34,6 @@
 		
 
 			echo '<tr>';
-			echo '<td><input name="selected_id[]" value="' . $id . '" type="radio"></td>';
 			echo '<td>' . $stt_hang . '</td>';
 			echo '<td>' . $username . '</td>';
 			echo '<td>' . $password . '</td>';

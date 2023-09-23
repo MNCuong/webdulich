@@ -76,7 +76,7 @@
 			</div>
 
 			<div class="footchild">
-				<strong class="tieude">Về Bighouse</strong>
+				<strong class="tieude">Về CHTravel</strong>
 				<a href=""><strong>Cách đặt chỗ</strong></a>
 				<a href=""><strong>Liên hệ chúng tôi</strong></a>
 				<a href=""><strong>Trợ giúp</strong></a>
@@ -106,8 +106,8 @@
 			</div>
 			<div class="footchild">
 				<strong class="tieude">Khác</strong>
-				<a href=""><strong>Bighouse Affiliate</strong></a>
-				<a href=""><strong>Bighouse Blog</strong></a>
+				<a href=""><strong>CHTravel Affiliate</strong></a>
+				<a href=""><strong>CHTravel Blog</strong></a>
 				<a href=""><strong>Chính sách quyền riêng tư</strong></a>
 				<a href=""><strong>Quy chế hoạt động</strong></a>
 				<a href=""><strong>Điều khoản & Điều kiện</strong></a>
@@ -115,7 +115,7 @@
 				<a href=""><strong>Đăng ký doanh nghiệp hoạt động du lịch của bạn</strong></a>
 				<a href=""><strong>Khu vực báo chí</strong></a>
 				<br>
-				<strong class="tieude">Tải ứng dụng Bighouse</strong>
+				<strong class="tieude">Tải ứng dụng CHTravel</strong>
 				<a href=""><img src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/f/f519939e72eccefffb6998f1397901b7.svg" alt=""></a>
 				<a href=""><img src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/1/18339f1ae28fb0c49075916d11b98829.svg" alt=""></a>
 			</div>
