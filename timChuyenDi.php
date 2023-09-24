@@ -17,39 +17,6 @@
 </head>
 
 <body>
-    <?php
-    $db = "anh";
-    $table = "chuyendi";
-    $conn = mysqli_connect("localhost", "root", "", $db) or die("Không connect đc với máy chủ");
-    $sql = "SELECT * FROM $table";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_execute($stmt);
-    $rows = mysqli_stmt_get_result($stmt);
-    $seenPoints = []; ?>
-
-    <datalist id="diemKhoiHanh">
-        <?php while ($row = mysqli_fetch_assoc($rows)) {
-            $diemKhoiHanh = $row['diemKhoiHanh'];
-            if (!isset($seenPoints[$diemKhoiHanh])) { ?>
-                <option value="<?php echo $diemKhoiHanh ?>"><?php echo $diemKhoiHanh ?></option>
-        <?php
-                $seenPoints[$diemKhoiHanh] = true;
-            }
-        }
-        ?>
-    </datalist>
-    <datalist id="diemDen">
-        <?php while ($row = mysqli_fetch_assoc($rows)) {
-            $diemDen = $row['diemDen'];
-            if (!isset($seenPoints[$diemDen])) { ?>
-                <option value="<?php echo $diemDen ?>"><?php echo $diemDen ?></option>
-        <?php
-                $seenPoints[$diemDen] = true;
-            }
-        }
-        mysqli_close($conn); ?>
-    </datalist>
-
     <div class="container" style="margin-top: 100px;">
         <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -83,72 +50,91 @@
         </div>
     </div>
 
-    <div class="container marginTop" style="border-style: solid; border-width: 1px; border-radius: 10px;">
-        <div class="row text-uppercase text-center fs-1">
-            <p>Tìm Chuyến đi</p>
-        </div>
-
-        <form action="danhSachChuyenDi.php" method="post">
+    <form action="danhSachChuyenDi.php">
+        <div class="container" style="margin-top: 100px; border-style: solid; border-width: 1px; border-radius: 10px;">
+            <div class="row text-uppercase text-center fs-1">
+                <p>Tìm chuyến đi</p>
+            </div>
             <div class="row">
                 <div class="col">
-                    <span class="input-group-text">Phương tiện</span>
-                    <select name="phuongTien" onchange="selectPhuongTien()" class="form-control">
-                        <option value="1">Máy bay</option>
-                        <option value="2">Tàu hoả</option>
-                        <option value="3">Xe khách</option>
-                    </select>
+                    <p class="text-center">Loại phương tiện</p>
+                    <div class="dropdown d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="selectedItem1">Loại phương tiện
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="selectItem1('Máy bay')">Máy bay</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectItem1('Xe khách')">Xe khách</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectItem1('Tàu hoả')">Tàu hoả</a></li>
+                        </ul>
+                    </div>
                 </div>
+
                 <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Điểm khởi hành</span>
-                        <input type="text" class="form-control" name="diemKhoiHanh" list="diemKhoiHanh" autocomplete="on">
+                    <p class="text-center">Từ</p>
+                    <div class="dropdown d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="selectedItem2">Nơi đi
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="selectItem2('Hà Nội')">Hà Nội</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectItem2('Hạ Long')">Hạ Long</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectItem2('Đà Lạt')">Đà Lạt</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Điểm đến</span>
-                        <input type="text" class="form-control" name="diemDen" list="diemDen" autocomplete="on">
+                    <p class="text-center">Đến</p>
+                    <div class="dropdown d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="selectedItem3">Nơi đến
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="selectItem3('Hà Nội')">Hà Nội</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectItem3('Hạ Long')">Hạ Long</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectItem3('Đà Lạt')">Đà Lạt</a></li>
+                        </ul>
                     </div>
                 </div>
+
+
             </div>
 
             <div class="row">
                 <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Ngày đi</span>
-                        <input type="date" class="form-control" name="ngayDi">
+                    <p class="text-center">Ngày đi</p>
+                    <div class="form-outline d-flex justify-content-center">
+                        <input type="date" id="typeNumber" class="form-control-lg" />
                     </div>
+
                 </div>
                 <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Số hành khách</span>
-                        <input type="number" class="form-control" name="soHanhKhach">
+                    <p class="text-center">Số hành khách</p>
+                    <div class="form-outline d-flex justify-content-center">
+                        <input type="number" id="typeNumber" class="form-control-lg" />
                     </div>
                 </div>
-                <div class="col ">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Giá vé</span>
-                        <input type="number" class="form-control" name="giaVe">
-                    </div>
-                </div>
-            </div>
 
+            </div>
             <div class="row">
                 <div class="col d-flex justify-content-center">
-                    <button type="submit" class="button">Tìm chuyến đi</button>
+                    <button type="submit" class="button">Tìm</button>
                 </div>
             </div>
-    </div>
+        </div>
     </form>
 
     <script>
-        function selectPhuongTien() {
-            // Lấy giá trị đã chọn trong dropdown button
-            var phuongTien = document.querySelector("select").value;
+        function selectItem3(item) {
+            document.getElementById('selectedItem1').textContent = `${item}`;
+        }
 
-            // Thay đổi giá trị của biến
-            var $variable = document.querySelector("#variable");
-            $variable.innerHTML = phuongTien;
+        function selectItem2(item) {
+            document.getElementById('selectedItem2').textContent = `${item}`;
+
+        }
+
+        function selectItem3(item) {
+
+            document.getElementById('selectedItem3').textContent = `${item}`;
+
         }
     </script>
 </body>

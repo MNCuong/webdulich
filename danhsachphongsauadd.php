@@ -7,11 +7,11 @@
 
 	<style>
 	
-h1 {
-    color: #FF5733;
-    font-size: 36px; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
-}
+		h1 {
+			color: #FF5733;
+			font-size: 36px; 
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+		}
 		body{
 			background-image: url(https://kconceptvn.com/wp-content/uploads/2020/04/hotel-photography-chup-anh-khach-san-khach-san-bamboo-sapa-hotel-18-1024x683.jpg);
 			background-size: cover;
@@ -137,7 +137,7 @@ ul {
 			font-size: 16px;
 			border: 1px solid rgba(208,205,205,1.00);
 		}
-
+		
 	</style>
 
 
@@ -185,7 +185,7 @@ ul {
 	?>
 	
 	<br>
-	<div class="container">
+		<div class="container">
 		<div class="overview">
 			<p>Còn trống: <?php echo($tong_controng)?> phòng</p>
 			<p>Đã đặt: <?php echo($tong_dadat)?> phòng</p>
@@ -206,20 +206,22 @@ ul {
 		  </div>
 		</div>
 	<div id="searchResults">
-  <!-- Bảng kết quả tìm kiếm sẽ được hiển thị ở đây -->
 	</div>
 		
 		</div>
 	</div>
 	
-	
-	
+		<form action="xoa_phongcontroller.php" method="post">
+        <input type="hidden" name="selected_ids" id="selected_ids_hidden" value="">
+		<input type="submit" value="Xóa phòng">
+
 	<table width="400" align="center" border="1">
 	  <tbody>
 		<tr>
 		  <td colspan="8" style="height: 0px;"><h3>Danh sách phòng</h3></td>
 		</tr>
 		<tr align="center">
+		  <td width="38">&nbsp;</td>
 		  <td style="height: 30px;" width="38">STT</td>
 		  <td style="height: 30px;" width="38">Loại phòng</td>
 		  <td style="height: 30px;" width="83">Giá</td>
@@ -237,6 +239,7 @@ ul {
 		  		}
 			?>
 		<tr>
+		  <td><input name="selected_id[]" value="<?php echo $id_hang[$i] ?>" type="checkbox"></td>
 		  <td><?php echo $i;?></td>
 		  <td><?php echo $loaiphong[$i];?></td>
 		  <td><?php echo $price0[$i]?></td>
@@ -246,8 +249,7 @@ ul {
 		  <td><?php echo $diadiem[$i]?></td>
 
 		  <td>
-				<a href="form_suaphong.php?id_phong=<?php echo $id_hang[$i]?>" name="edit"> Edit</a>/
-				<a href="xoa_phongcontroller.php?id_phong=<?php echo $id_hang[$i]?>" name="delete">Delete </a>
+				<a href="form_suaphong.php?id_phong=<?php echo $id_hang[$i]?>" name="edit"> Edit</a>
 			</td>
 		</tr>
 		  <?php  
@@ -258,6 +260,8 @@ ul {
 		</tr>
 	  </tbody>
 	</table>
+		
+	</form>
 	<ul>
 			<?php
 				for ($i = 1; $i <= $soluongtrang; $i++) {
@@ -265,28 +269,30 @@ ul {
 				}
 			?>
 		</ul>
+	
+	
+	
+	
+	
 </body>
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-		  var searchInput = document.getElementById("searchInput");
-		  var searchButton = document.getElementById("searchButton");
-		  var searchResults = document.getElementById("searchResults");
-		  var thongtintaikhoan = document.getElementById("thongtintaikhoan");
+	
 
-		  searchButton.addEventListener("click", function () {
-			var searchTerm = searchInput.value.trim();
-			var xhr = new XMLHttpRequest();
-			xhr.open("POST", "timkiemphong_controller.php", true);
-			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhr.onreadystatechange = function () {
-			  if (xhr.readyState === 4 && xhr.status === 200) {
-				var searchResultHTML = xhr.responseText;
-				searchResults.innerHTML = searchResultHTML;
-				thongtintaikhoan.style.display="none";
-			  }
-			};
-			xhr.send("search=" + searchTerm);
-		  });
-		});
-	</script>
+	
+	<script>
+        function deleteselect() {
+            var selectedIds = [];
+            var checkboxes = document.querySelectorAll('input[name="selected_id[]"]:checked');
+            for (var i = 0; i < checkboxes.length; i++) {
+                selectedIds.push(checkboxes[i].value);
+            }
+            document.getElementById('selected_ids_hidden').value = selectedIds.join(',');
+        }
+        
+        var checkboxList = document.querySelectorAll('input[name="selected_id[]"]');
+        for (var i = 0; i < checkboxList.length; i++) {
+            checkboxList[i].addEventListener('change', deleteselect);
+        }
+    </script>
+	
+	
 </html>
