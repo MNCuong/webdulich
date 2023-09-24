@@ -20,34 +20,25 @@
     <?php
     $db = "anh";
     $table = "chuyendi";
-    $conn = mysqli_connect("localhost", "root", "", $db) or die("Không connect đc với máy chủ");
-    $sql = "SELECT * FROM $table";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_execute($stmt);
-    $rows = mysqli_stmt_get_result($stmt);
-    $seenPoints = []; ?>
+    $conn = new mysqli("localhost", "root", "", $db);
+
+    $result = $conn->query("SELECT * FROM $table ");
+
+    foreach ($result as $row) {
+        $diemKhoiHanh[] = $row['diemKhoiHanh'];
+        $diemDen[] = $row['diemDen'];
+    }
+    $conn->close(); ?>
 
     <datalist id="diemKhoiHanh">
-        <?php while ($row = mysqli_fetch_assoc($rows)) {
-            $diemKhoiHanh = $row['diemKhoiHanh'];
-            if (!isset($seenPoints[$diemKhoiHanh])) { ?>
-                <option value="<?php echo $diemKhoiHanh ?>"><?php echo $diemKhoiHanh ?></option>
-        <?php
-                $seenPoints[$diemKhoiHanh] = true;
-            }
-        }
-        ?>
+        <?php foreach ($diemKhoiHanh as $diem) { ?>
+            <option value="<?php echo $diem; ?>"><?php echo $diem; ?></option>
+        <?php } ?>
     </datalist>
     <datalist id="diemDen">
-        <?php while ($row = mysqli_fetch_assoc($rows)) {
-            $diemDen = $row['diemDen'];
-            if (!isset($seenPoints[$diemDen])) { ?>
-                <option value="<?php echo $diemDen ?>"><?php echo $diemDen ?></option>
-        <?php
-                $seenPoints[$diemDen] = true;
-            }
-        }
-        mysqli_close($conn); ?>
+        <?php foreach ($diemDen as $diem) { ?>
+            <option value="<?php echo $diem; ?>"><?php echo $diem; ?></option>
+        <?php } ?>
     </datalist>
 
     <div class="container" style="margin-top: 100px;">

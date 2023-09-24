@@ -51,7 +51,14 @@
         </div>
     </div>
 
+
+
     <div class="container" style="padding-top:  50px;">
+        <div class="row">
+            <div class="col d-flex justify-content">
+                <a href="index_muaVe.php" class="button">Tìm vé khác</a>
+            </div>
+        </div>
         <div class="row text-uppercase text-center fs-1">
             <p>Danh sách vé</p>
         </div>
@@ -117,13 +124,13 @@
                 <div class="col">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Điểm khởi hành</span>
-                        <input type="text" class="form-control" name="diemKhoiHanh" value="<?php echo $diemKhoiHanh[$i] ?>">
+                        <input type="text" class="form-control" name="diemKhoiHanh" value="<?php echo $diemKhoiHanh[$i] ?>" disabled>
                     </div>
                 </div>
                 <div class="col">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Điểm đến</span>
-                        <input type="text" class="form-control" name="diemDen" value="<?php echo $diemDen[$i] ?>">
+                        <input type="text" class="form-control" name="diemDen" value="<?php echo $diemDen[$i] ?>" disabled>
                     </div>
                 </div>
             </div>
@@ -132,19 +139,19 @@
                 <div class="col">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Ngày đi</span>
-                        <input type="date" class="form-control" name="ngayDi" value="<?php echo $ngayDi[$i] ?>">
+                        <input type="date" class="form-control" name="ngayDi" value="<?php echo $ngayDi[$i] ?>" disabled>
                     </div>
                 </div>
                 <div class="col">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Số hành khách</span>
-                        <input type="number" class="form-control" name="soHanhKhach" value="<?php echo $qsoHanhKhach ?>">
+                        <input type="number" class="form-control" name="soHanhKhach" value="<?php echo $qsoHanhKhach ?>" disabled>
                     </div>
                 </div>
                 <div class="col ">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Giá vé</span>
-                        <input type="number" class="form-control" name="giaVe" value="<?php echo $giaVe[$i] ?>">
+                        <input type="number" class="form-control" name="giaVe" value="<?php echo ($qsoHanhKhach * $giaVe[$i] / $soHanhKhach[$i]) ?>" disabled>
                     </div>
                 </div>
             </div>
