@@ -12,11 +12,7 @@
 			font-size: 36px; 
 			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 		}
-		body{
-			background-image: url(https://kconceptvn.com/wp-content/uploads/2020/04/hotel-photography-chup-anh-khach-san-khach-san-bamboo-sapa-hotel-18-1024x683.jpg);
-			background-size: cover;
-		}
-
+		
 table {
     width: 80%; 
     margin: 20px auto; 
@@ -88,13 +84,14 @@ ul {
 			margin: 5px;
 		}
 
-		ul li a {
+		.chiso {
 			text-decoration: none;
 			color: #333;
 			background: linear-gradient(135deg, #FF5733, #FF7044);
 			padding: 5px 10px;
 			border-radius: 5px;
 			transition: background 0.3s ease-in-out;
+			display: inline;
 		}
 
 		ul li a:hover {
@@ -112,7 +109,7 @@ ul {
 			justify-content: space-between;
 
 		}
-		.overview{
+		.overviewtk{
 			border: 3px solid black;
 			width: 50%;
 			border-radius: 4px;
@@ -186,7 +183,7 @@ ul {
 	
 	<br>
 		<div class="container">
-		<div class="overview">
+		<div class="overviewtk">
 			<p>Còn trống: <?php echo($tong_controng)?> phòng</p>
 			<p>Đã đặt: <?php echo($tong_dadat)?> phòng</p>
 			<p>Tổng phòng: <?php echo($tong_bg)?> phòng</p> 
@@ -196,17 +193,7 @@ ul {
 				<a href="addphong.php" ><button>Thêm phòng</button></a>
 				<a href="indexadmin.php" ><button>Trở về</button></a>
 			</div>
-		<div class="timkiem">
-		  <div class="main">
-			<input type="search" name="search" class="timkiembutton" id="searchInput" placeholder="Nhập từ khóa tìm kiếm">
-			<button type="button" class="search-button" id="searchButton">
-			  <i class="fa-solid fa-magnifying-glass" style="color: #f7f7f8;"></i>
-			  Tìm kiếm
-			</button>
-		  </div>
-		</div>
-	<div id="searchResults">
-	</div>
+		
 		
 		</div>
 	</div>
@@ -262,10 +249,10 @@ ul {
 	</table>
 		
 	</form>
-	<ul>
+	<ul .>
 			<?php
 				for ($i = 1; $i <= $soluongtrang; $i++) {
-					echo "<li><a href='danhsachphongsauadd.php?page=$i'>$i</a></li> ";
+					echo "<li><a class='chiso' href='indexadmin.php?page=$i'>$i</a></li> ";
 				}
 			?>
 		</ul>

@@ -88,13 +88,14 @@
 			margin: 5px;
 		}
 
-		ul li a {
+		td  a {
 			text-decoration: none;
 			color: #333;
 			background: linear-gradient(135deg, #FF5733, #FF7044); 
 			padding: 5px 10px;
 			border-radius: 5px;
 			transition: background 0.3s ease-in-out;
+			
 		}
 
 		ul li a:hover {
@@ -136,6 +137,15 @@
 			border-radius: 24px;
 			font-size: 16px;
 			border: 1px solid rgba(208,205,205,1.00);
+		}
+		.chiso {
+			text-decoration: none;
+			color: #333;
+			background: linear-gradient(135deg, #FF5733, #FF7044);
+			padding: 5px 10px;
+			border-radius: 5px;
+			transition: background 0.3s ease-in-out;
+			display: inline;
 		}
 
 	</style>
@@ -288,7 +298,7 @@
 		<ul>
 			<?php
 				for ($i = 1; $i <= $soluongtrang; $i++) {
-					echo "<li><a href='indexadmin.php?page=$i'>$i</a></li> ";
+					echo "<li><a class='chiso' href='indexadmin.php?page=$i'>$i</a></li> ";
 				}
 			?>
 		</ul>
