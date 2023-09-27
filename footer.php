@@ -39,7 +39,7 @@
 			color: rgba(148,150,151,1.00);
 			opacity: 0.7;
 		}
-		a:hover{
+		.footchild a:hover{
 			color: white;
 			text-decoration-line: underline;
 		}
@@ -61,6 +61,7 @@
 		.tieude{
 			font-size: 16px;
 		}
+		
 		
 	
 	</style>
