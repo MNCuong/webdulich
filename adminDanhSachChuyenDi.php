@@ -52,7 +52,7 @@
                 <li><a class="dropdown-item" href="adminDanhSachChuyenDi.php?phuongtien=3" onclick="selectItem1('Xe khách')">Xe khách</a></li>
             </ul>
         </div><br>
-        <form action="controllerXoaNhieuChuyenDi.php" method="post">
+        <form action="controller/controllerXoaNhieuChuyenDi.php" method="post">
 
             <table class="table table-bordered">
                 <thead>
@@ -141,4 +141,3 @@
 </body>
 
 </html>
-
