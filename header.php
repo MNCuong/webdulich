@@ -17,6 +17,7 @@ session_start();
             font-family: Arial, "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
             box-sizing: border-box;
             background-color: #f0f0f0; 
+			font-size: bold;
 			
         }	
 		.header{
@@ -50,6 +51,8 @@ session_start();
             color: rgba(255, 255, 255, 1.00);
             cursor: pointer;
             transition: opacity 0.3s;
+			font-size: 16px;
+			opacity: 0.9;
         }
 
         .child1 button:hover {
@@ -60,6 +63,7 @@ session_start();
             background-color: rgba(242, 243, 243, 1.00);
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
             position: relative;
+			height: 60px;
         }
 
         .menu {
@@ -73,14 +77,18 @@ session_start();
             font-weight: 700;
             padding: 12px 12px;
             text-decoration: none;
-            color: rgba(3, 18, 26, 1.00);
+            color:rgba(3, 18, 26, 1.00);
             transition: background-color 0.3s;
+			opacity: 0.7;
         }
 
         .menu a:hover,.menu i:hover  {
             background-color: rgba(188, 188, 188, 1.00);
 			color: black;
         }
+		i{
+			margin: 10px 10px 10px 0;
+		}
 
        
     </style>
@@ -94,14 +102,15 @@ session_start();
                    <?php
                         if(isset($_SESSION['userclient'])) {
 							    ?>
-						<h4 style="font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><marquee behavior="scroll" direction="right" scrollamount="10"><?php echo "Welcome " . $_SESSION['userclient'] . "!<br>";?></marquee></h4>
+						<marquee behavior="scroll" direction="right" scrollamount="10" style="font-size: 24px; "><?php echo "Welcome " . $_SESSION['userclient'] . "!<br>";?></marquee>
 					<?php
 						}?>
 				
-                </div>
-                <div class="child11">
+               </div>
+                <div class="child11" style="display: flex;">
                     <?php
                     if(isset($_SESSION['userclient'])) {
+						echo '<a href="dienthongtinnguoidung.php"><img src="pic/nendangnhap.jpg" style="width: 50px; height: 50px; border-radius: 50%;" alt=""></a>';
                         echo '<a href="dangxuat_controller.php"><button><i class="fa-solid fa-right-from-bracket" style="color: #fff;"></i>Đăng xuất</button></a>';
                     } else {
                         echo '<a href="dangnhapclient.php"><button><i class="fa-regular fa-user" style="color: #fff;"></i>Đăng nhập</button></a>';
@@ -115,7 +124,6 @@ session_start();
                     <a href="index.php"><i class="fa-solid fa-house" style="color: #000000;"></i>Home</a>
                     <a href="index_chuyendi.php"><i class="fa-solid fa-person-walking" style="color: #000000;"></i>Di chuyển</a>
                     <a href="danhsachphongks.php"><i class="fa-solid fa-bed" style="color: #000000;"></i>Đặt phòng</a>
-                    <a href="lichsudatphong.php"><i class="fa-solid fa-clock-rotate-left" style="color: #000000;"></i>Lịch sử đặt phòng</a>
                     <a href="index_trangchudulich.php"><i class="fa-regular fa-calendar-check" style="color: #000000;"></i>Hoạt động và giải trí</a>
                 </div>
             </div>

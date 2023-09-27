@@ -20,7 +20,6 @@ if (!isset($_SESSION['userclient'])) {
 
 		.title {
 			font-size: 45px;
-			font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 		}
 		
         .header1 {
