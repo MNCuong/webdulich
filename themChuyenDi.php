@@ -25,7 +25,6 @@
             justify-content: center;
             align-items: center;
         }
-
     </style>
 </head>
 
@@ -96,10 +95,8 @@
 
     <script>
         function selectPhuongTien() {
-            // Lấy giá trị đã chọn trong dropdown button
             var phuongTien = document.querySelector("select").value;
 
-            // Thay đổi giá trị của biến
             var $variable = document.querySelector("#variable");
             $variable.innerHTML = phuongTien;
         }

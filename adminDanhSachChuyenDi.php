@@ -57,7 +57,8 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th></th>
+
+                        <th><input type="submit" value="Xóa"></th>
                         <th>Số thứ tự</th>
                         <th>Điểm khởi hành</th>
                         <th>Điểm đến</th>
@@ -127,7 +128,7 @@
                 ?>
             </ul>
 
-            <input type="submit" value="Xóa">
+
         </form>
     </div>
 
