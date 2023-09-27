@@ -16,6 +16,11 @@
 				include('./Tabletour.php');
 			} else if ($temp == 'diadiem') {
 				include('./Tablediadiem.php');
+			} else if ($temp == 'danhsachdatphong') {
+				include('./danhsachdatphong.php');
+			}
+else if ($temp == 'thongtinnguoidung') {
+				include('./thongtinnguoidung.php');
 			}
 			else{
 				include('./danhsachtaikhoan.php');

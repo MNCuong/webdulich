@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>List account</title>
+<title>List user</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 	<style>
 	
@@ -154,19 +154,19 @@
 		// Tính toán OFFSET (độ lệch)
 		$offset = ($current_page - 1) * $sobg;
 
-		$select = "SELECT * FROM `datphong` LIMIT $offset, $sobg";
+		$select = "SELECT * FROM `nguoidung` LIMIT $offset, $sobg";
 		$result = mysqli_query($conn, $select);
 		$stt_hang = ($current_page - 1) * $sobg;
 
 		while ($row = mysqli_fetch_object($result)) {
 			$stt_hang++;
-			$id_tk[$stt_hang] = $row->id;
-			$id_phong[$stt_hang] = $row->id_phong;
+			$id_nguoidung[$stt_hang] = $row->id_nguoidung;
 			$username[$stt_hang] = $row->username;
-			$tenkhach[$stt_hang] = $row->tenkhach;
-			$ngayden[$stt_hang] = $row->ngayden;
-			$ngaydi[$stt_hang] = $row->ngaydi;
-			$diadiem[$stt_hang] = $row->diadiem;
+			$hoten[$stt_hang] = $row->hoten;
+			$ngaysinh[$stt_hang] = $row->ngaysinh;
+			$gioitinh[$stt_hang] = $row->gioitinh;
+			$sdt[$stt_hang] = $row->sdt;
+			$diachi[$stt_hang] = $row->diachi;
 		}
 
 
@@ -193,13 +193,13 @@
 		</tr>
 		<tr align="center">
 		  <td width="38">STT</td>
-		  <td width="38">ID phòng</td>
+		  <td width="38">ID người dùng</td>
 		  <td width="83">Username</td>
-		  <td width="83">Tên khách</td>
-		  <td width="83 ">Ngày đến</td>
-		  <td width="83">Ngày đi</td>
-		  <td width="83">Địa điểm</td>
-		  <td width="83">Chức năng</td>
+		  <td width="83">Họ tên</td>
+		  <td width="83 ">Ngày sinh</td>
+		  <td width="83">Giới tính</td>
+		  <td width="83">Số điện thoại</td>
+		  <td width="83">Địa chỉ </td>
 		</tr>
 		  	<?php
 			  for ($i = ($current_page - 1) * $sobg +1; $i <= ($current_page - 1) * $sobg +$sobg ; $i++)
@@ -210,12 +210,13 @@
 			?>
 		<tr>	
 			<td><?php echo $i?></td>
-		  <td><?php echo $id_phong[$i]?></td>
+		  <td><?php echo $id_nguoidung[$i]?></td>
 		  <td><?php echo $username[$i]?></td>
-		  <td><?php echo $tenkhach[$i]?></td>
-		  <td><?php echo $ngayden[$i]?></td>
-		  <td><?php echo $ngaydi[$i]?></td>
-		  <td><?php echo $diadiem[$i]?></td>
+		  <td><?php echo $hoten[$i]?></td>
+		  <td><?php echo $ngaysinh[$i]?></td>
+		  <td><?php echo $gioitinh[$i]?></td>
+		  <td><?php echo $sdt[$i]?></td>
+		  <td><?php echo $diachi[$i]?></td>
 		  	<td >
 				<a href="xoa_taikhoan_controller.php?id=<?php echo $id[$i]?>"><i class="fa-solid fa-trash"></i></a>
 			</td>

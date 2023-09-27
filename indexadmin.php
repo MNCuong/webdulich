@@ -171,20 +171,20 @@ if (!isset($_SESSION['useradmin'])) {
             <li class="parent-item"> 
                 <a href="#">Quản lý tài khoản</a>
                 <ul class="submenu"> 
-                    <li><a href="#">Thêm người dùng</a></li>
+                    <li><a href="indexadmin.php?danhmuc=thongtinnguoidung">Quản lý người dùng</a></li>
                     <li><a href="indexadmin.php?danhmuc=danhsachtaikhoan">Danh sách người dùng</a></li>
                 </ul>
             </li>
             <li class="parent-item"> 
                 <a href="#">Quản lý di chuyển</a>
                 <ul class="submenu"> 
-                    <li><a href="indexadmin.php?danhmuc=danhsachchuyen"> chuyen di</a></li>
+                    <li><a href="indexadmin.php?danhmuc=danhsachchuyen">Chuyến đi</a></li>
                 </ul>
             </li>
 			<li class="parent-item"> 
                 <a href="#">Quản lý phòng</a>
                 <ul class="submenu"> 
-                    <li><a href="#">Danh sách đặt phòng</a></li>
+                    <li><a href="indexadmin.php?danhmuc=danhsachdatphong">Danh sách đặt phòng</a></li>
                 </ul>
             </li>
 			<li class="parent-item"> 

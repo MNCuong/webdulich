@@ -122,7 +122,7 @@ session_start();
             <div class="child2">
                 <div class="menu">
                     <a href="index.php"><i class="fa-solid fa-house" style="color: #000000;"></i>Home</a>
-                    <a href="index_muaVe.php"><i class="fa-solid fa-person-walking" style="color: #000000;"></i>Di chuyển</a>
+                    <a href="index_chuyendi.php"><i class="fa-solid fa-person-walking" style="color: #000000;"></i>Di chuyển</a>
                     <a href="danhsachphongks.php"><i class="fa-solid fa-bed" style="color: #000000;"></i>Đặt phòng</a>
                     <a href="index_trangchudulich.php"><i class="fa-regular fa-calendar-check" style="color: #000000;"></i>Hoạt động và giải trí</a>
                 </div>
