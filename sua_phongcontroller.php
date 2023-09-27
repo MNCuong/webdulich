@@ -6,7 +6,6 @@
 		$tinhtrang = isset($_REQUEST["description"]) ? $_REQUEST["description"] : "";
 
 	
-	//Xử lý ảnh tải lên
 		$src_logo0 = "images/";
 		$file_tmp = isset($_FILES['anhphongmoi']['tmp_name']) ? $_FILES['anhphongmoi']['tmp_name'] : ""; 
 		$file_name = isset($_FILES['anhphongmoi']['name']) ? $_FILES['anhphongmoi']['name'] : ""; 
@@ -30,9 +29,7 @@
 			echo "Lỗi trong quá trình cập nhật: " . $conn->error;
 		}
     $conn->close();
-	} else {
-		echo "Vui lòng điền đầy đủ thông tin.";
-	}
+	
 
 
 

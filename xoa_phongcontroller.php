@@ -1,12 +1,21 @@
-
-	<?php 
-	$db="anh";
-	$id_hang0=$_REQUEST["id_phong"];
-	$conn=new mysqli("localhost","root","",$db) or die ("Không connect đc với máy chủ");
-	$sql_delete= "DELETE FROM anhhh WHERE `anhhh`.`id_phong` = $id_hang0";
-	mysqli_query($conn, $sql_delete);
-	//Sau khi xóa sẽ trở lại trang danh sách
-	header("Location: danhsachphongsauadd.php");
-	
-
-	?>
+<?php
+if (isset($_POST['selected_ids'])) {
+    $db = "anh";
+    $conn = new mysqli("localhost", "root", "", $db) or die("Không connect được với máy chủ");
+    
+    $selected_ids = explode(',', $_POST['selected_ids']);
+    
+    foreach ($selected_ids as $id_phong) {
+       $update_query = "DELETE FROM anhhh WHERE id_phong = $id_phong";
+        if ($conn->query($update_query) !== TRUE) {
+            echo "Lỗi cập nhật quyền: " . $conn->error;
+        } else {
+            echo "Đã xóa phòng có ID $id_phong";
+        }
+    }
+    $conn->close();
+    header('Location: danhsachphongsauadd.php');
+} else {
+    echo "Không có dữ liệu được gửi từ form.";
+}
+?>

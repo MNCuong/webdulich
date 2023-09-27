@@ -123,8 +123,19 @@ if (!isset($_SESSION['userclient'])) {
 <?php	
 		$db="anh";
 		$conn=new mysqli("localhost","root","",$db) or die ("Không connect đc với máy chủ");//tạo kết nối với server
-		
-				$selectvip = "SELECT * FROM `anhhh` WHERE `loaiphong`='VIP'";
+		if (isset($_POST['diadiem'])) {
+		$selectedLocation = $_POST['diadiem'];
+		}
+	$selectedLocation = isset($_POST['diadiem']) ? $_POST['diadiem'] : 'all';
+
+
+		$selectvip = "SELECT * FROM `anhhh` WHERE `loaiphong`='VIP'";
+		$selectbd = "SELECT * FROM `anhhh` WHERE `loaiphong`='Bình dân'";
+
+		if ($selectedLocation != "all") {
+			$selectvip .= " AND `diadiem`='$selectedLocation'";
+			$selectbd .= " AND `diadiem`='$selectedLocation'";
+		}
 				$result = mysqli_query($conn, $selectvip);
 				$stt_hang=0;
 			while($row = mysqli_fetch_object($result))
@@ -141,8 +152,9 @@ if (!isset($_SESSION['userclient'])) {
 		}
 	$tong_bg = mysqli_num_rows(mysqli_query($conn, $selectvip));
 	
-	$selectbd = "SELECT * FROM `anhhh` WHERE `loaiphong`='Bình dân'";
-				$bd = mysqli_query($conn, $selectbd);
+
+
+					$bd = mysqli_query($conn, $selectbd);
 				$stt_hangbd=0;
 			while($row = mysqli_fetch_object($bd))
 			{
@@ -204,7 +216,38 @@ if (!isset($_SESSION['userclient'])) {
         </div>
 	</div>
 	<div class="container">
-	<h2>Danh sách phòng VIP</h2></div>
+		<h2>Danh sách phòng VIP</h2>
+		<form method="POST"> 
+			<label for="diadiem" style="font-weight: bold;">Chọn địa điểm:</label>
+			<select id="diadiem" name="diadiem" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px;">
+				<option value="all">Tất cả địa điểm</option>
+				<?php
+					$tinhThanhList = array(
+					"Hà Nội", "Hồ Chí Minh", "Đà Nẵng", "Hải Phòng", "Bà Rịa - Vũng Tàu",
+					"An Giang", "Bạc Liêu", "Bắc Kạn", "Bắc Giang", "Bắc Ninh",
+					"Bến Tre", "Bình Dương", "Bình Định", "Bình Phước", "Bình Thuận",
+					"Cà Mau", "Cao Bằng", "Cần Thơ", "Đắk Lắk", "Đắk Nông",
+					"Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang",
+					"Hà Nam", "Hà Tĩnh", "Hải Dương", "Hậu Giang", "Hưng Yên",
+					"Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng",
+					"Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An",
+					"Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình",
+					"Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng",
+					"Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa",
+					"Thừa Thiên Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang", "Vĩnh Long",
+					"Vĩnh Phúc", "Yên Bái"
+				);
+
+				foreach ($tinhThanhList as $tinhThanh) {
+					echo '<option value="' . $tinhThanh . '">' . $tinhThanh . '</option>';
+				}
+    			?>
+			</select>
+			<input type="submit" value="Lọc" style="background-color: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor: pointer;">
+		</form>
+
+
+	</div>
     <div class="container">
 		 <?php
 			  for ($i = 1; $i <= $tong_bg ; $i++)

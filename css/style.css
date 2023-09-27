@@ -47,14 +47,15 @@ body{
 	margin: 20% 0 20% 0 ;
 	
 }
+/*
 .main_login>p,input,button
 {
 	width: 100%;
 	margin-bottom: 20px;
-	text-align: center;
 	height: 100%;
 	
 }
+*/
 .main_login>input,button{
 	height: 45px;
 	width: 100%;

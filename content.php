@@ -335,7 +335,7 @@
 				 <img src="images/<?php echo $anhphong[$i]?>" alt="Card image" style="height: 300px; width: 100%; border-radius: 8px;">
 				 <div class="card-body">
 					<h4 class="card-title">Hà Nội</h4>
-					<p class="card-text">Some example text.</p>
+					<p class="card-text">Nhanh tay nào!</p>
 					
 					 <a href=""><button>Đặt phòng</button></a>
 				 </div>

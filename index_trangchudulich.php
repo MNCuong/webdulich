@@ -1,3 +1,11 @@
+	<?php include './header.php';
+
+
+if (!isset($_SESSION['userclient'])) {
+    header('Location: dangnhapclient.php');
+    exit;
+}
+?>
 <!doctype html>
 <html>
 
@@ -17,6 +25,8 @@
 		
         .header {
             z-index: 0;
+			padding-top: 200px;  
+			
         }
 
         .search {
@@ -138,7 +148,6 @@
 </head>
 
 <body>
-	<?php include('header.php')?>
     <div class="container" style="display: flex;flex-direction: column ">
         <div class="content">
             <div class="header">
