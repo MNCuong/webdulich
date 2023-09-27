@@ -16,24 +16,6 @@
 
 <body>
 
-    <?php
-    $id = $_GET['id'];
-    $db = "anh";
-    $table = "chuyendi";
-    $conn = new mysqli("localhost", "root", "", $db) or die("Không connect đc với máy chủ");
-    $select = "SELECT * FROM $table WHERE id=$id";
-    $result_se_hang = mysqli_query($conn, $select);
-    $row = mysqli_fetch_object($result_se_hang);
-
-    $id = $row->id;
-    $phuongTien = $row->phuongTien;
-    $diemKhoiHanh = $row->diemKhoiHanh;
-    $diemDen = $row->diemDen;
-    $ngayDi = $row->ngayDi;
-    $soHanhKhach = $row->soHanhKhach;
-    $giaVe = $row->giaVe;
-    ?>
-
     <div class="container marginTop" style="border-style: solid; border-width: 1px; border-radius: 10px;">
         <form action="" method="post">
             <div class="row">
