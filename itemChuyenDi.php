@@ -16,6 +16,24 @@
 
 <body>
 
+    <?php
+    $id = $_GET['id'];
+    $db = "anh";
+    $table = "chuyendi";
+    $conn = new mysqli("localhost", "root", "", $db) or die("Không connect đc với máy chủ");
+    $select = "SELECT * FROM $table WHERE id=$id";
+    $result_se_hang = mysqli_query($conn, $select);
+    $row = mysqli_fetch_object($result_se_hang);
+
+    $id = $row->id;
+    $phuongTien = $row->phuongTien;
+    $diemKhoiHanh = $row->diemKhoiHanh;
+    $diemDen = $row->diemDen;
+    $ngayDi = $row->ngayDi;
+    $soHanhKhach = $row->soHanhKhach;
+    $giaVe = $row->giaVe;
+    ?>
+
     <div class="container marginTop" style="border-style: solid; border-width: 1px; border-radius: 10px;">
         <form action="" method="post">
             <div class="row">
@@ -36,46 +54,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col">
+            <button class="button">Chọn</button>
+        </div>
 
-            <div class="row">
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Ngày đi</span>
-                        <input type="date" class="form-control" name="ngayDi" value="<?php echo $ngayDi ?>">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Số hành khách</span>
-                        <input type="number" class="form-control" name="soHanhKhach" value="<?php echo $soHanhKhach ?>">
-                    </div>
-                </div>
-                <div class="col ">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Giá vé</span>
-                        <input type="number" class="form-control" name="giaVe" value="<?php echo $giaVe ?>">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <button type="submit" class="button">Chọn</button>
-                </div>
-            </div>
-        </form>
     </div>
-
-    <script>
-        function selectPhuongTien() {
-            // Lấy giá trị đã chọn trong dropdown button
-            var phuongTien = document.querySelector("select").value;
-
-            // Thay đổi giá trị của biến
-            var $variable = document.querySelector("#variable");
-            $variable.innerHTML = phuongTien;
-        }
-    </script>
 </body>
 
 </html>

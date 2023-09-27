@@ -52,13 +52,12 @@
                 <li><a class="dropdown-item" href="adminDanhSachChuyenDi.php?phuongtien=3" onclick="selectItem1('Xe khách')">Xe khách</a></li>
             </ul>
         </div><br>
-        <form action="controllerXoaNhieuChuyenDi.php" method="post">
+        <form action="controller/controllerXoaNhieuChuyenDi.php" method="post">
 
             <table class="table table-bordered">
                 <thead>
                     <tr>
-
-                        <th><input type="submit" value="Xóa"></th>
+                        <th></th>
                         <th>Số thứ tự</th>
                         <th>Điểm khởi hành</th>
                         <th>Điểm đến</th>
@@ -128,7 +127,7 @@
                 ?>
             </ul>
 
-
+            <input type="submit" value="Xóa">
         </form>
     </div>
 
@@ -142,4 +141,3 @@
 </body>
 
 </html>
-

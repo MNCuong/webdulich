@@ -176,7 +176,7 @@ if (!isset($_SESSION['useradmin'])) {
             <li class="parent-item"> 
                 <a href="#">Quản lý di chuyển</a>
                 <ul class="submenu"> 
-                    <li><a href="#"></a></li>
+                    <li><a href="adminDanhSachChuyenDi.php"> chuyen di</a></li>
                 </ul>
             </li>
 			<li class="parent-item"> 
