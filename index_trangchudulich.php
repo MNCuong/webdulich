@@ -23,7 +23,7 @@ if (!isset($_SESSION['userclient'])) {
 			font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 		}
 		
-        .header {
+        .header1 {
             z-index: 0;
 			padding-top: 200px;  
 			
@@ -150,11 +150,11 @@ if (!isset($_SESSION['userclient'])) {
 <body>
     <div class="container" style="display: flex;flex-direction: column ">
         <div class="content">
-            <div class="header">
+            <div class="header1">
 				<div class="title">
 					Địa điểm du lịch
 				</div>
-                <img src="BTL/HinhAnh/sunset-2983614.jpg" width="100%" height="300" style="object-fit: cover">
+                <img src="HinhAnh/sunset-2983614.jpg" width="100%" height="300" style="object-fit: cover">
             </div>
             <div class="search">
                 <div class="mainsearch">
