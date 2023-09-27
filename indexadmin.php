@@ -1,187 +1,230 @@
+<?php
+session_name('admin');
+session_start();
+if (!isset($_SESSION['useradmin'])) {
+    header('Location: dangnhapadmin.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Trang Quản Trị</title>
     <style>
-        /* CSS nội bộ cho trang này */
+		 .logout-button {
+            background-color: rgba(19, 99, 222, 1.00);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .logout-button:hover {
+            opacity: 0.7;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
         }
 
         header {
             background-color: #333;
-            color: white;
+            color: #fff;
+            padding: 10px;
             text-align: center;
-            padding: 20px;
+
         }
 
-        nav  {
+        nav ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
         }
 
-		
-
-       
-
-        main {
-            padding: 20px;
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
         }
 
-        /* CSS cho menu dọc */
-        .sidebar {
-            width: 250px;
-            background-color: #333;
-            color: white;
-            position: fixed;
-            height: 100%;
-            padding-top: 20px;
+        aside {
+            background-color: #444;
+            color: #fff;
+            width: 16%;
+            padding: 10px;
+            float: left;
+			height: 100vh;
         }
 
-        .sidebar ul {
+        aside ul {
             list-style-type: none;
             padding: 0;
         }
 
-        .sidebar ul li {
-            margin-bottom: 10px;
-			
+        aside li {
+            margin-bottom: 5px;
+			text-align: center
         }
 
-        .sidebar ul li a {
-            text-decoration: none;
-            color: white;
-            display: block;
-			padding: 12px;
-			width: 88%;
-			border-radius: 8px;
+        main {
+            padding: 20px;
+            margin-left: 220px;
         }
-		.sidebar ul li a:hover{
- 			border: 1px solid rgba(226,232,97,1.00);
-           
+
+        footer {
+            clear: both;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
         }
-		.submenu ul li a{
-			margin-left: 12px;
+		.logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+			border:3px solid rgba(244,129,61,1.00);
+        }
+		.logo:hover{
+			transform: scale(1.01);
+			cursor: pointer;
 		}
 
-        .content {
-            margin-left: 270px;
-            padding: 20px;
-        }
+		ul li a{
+			color: white;
+			text-decoration: none;
+			padding: 12px;
+			background: rgba(41,122,247,1.00);
+			display: block;
+			border-radius: 8px;
+		}
+		ul li{
+			width: 100%;
+			padding-top: 12px;
 
-        /* CSS cho bảng */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+		}
+        .submenu {
+            display: none;
         }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #333;
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-		.submenu{
-			display: none;
+		.submenu li{
+			padding: 8px 0px 0px 10%;
+			
+			width: 90%;
+		}
+		.sidebar-header{
+			text-align: center
 		}
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var parentItems = document.querySelectorAll(".parent-item");
+
+            parentItems.forEach(function(item) {
+                item.addEventListener("click", function() {
+                    var submenu = this.querySelector(".submenu");
+                    if (submenu.style.display === "block") {
+                        submenu.style.display = "none";
+                    } else {
+                        submenu.style.display = "block";
+                    }
+                });
+
+                item.addEventListener("mouseleave", function() {
+                    var submenu = this.querySelector(".submenu");
+                    submenu.style.display = "none";
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
-        <h1>Admin Panel</h1>
-        <nav>
-            
-        </nav>
+        <h1>Trang Quản Trị</h1>
+		<?php
+        
+        if (isset($_SESSION['useradmin'])) {
+            echo "<h3>Xin chào " . $_SESSION['useradmin'] . "!<br></h3>";
+        }
+        ?>
+       
     </header>
-    <div class="sidebar">
-		<ul>
-        		<li><a href="#">Quản lý tài khoản</a></li>
-                <li><a href="#">Di chuyển</a></li>
-                <li><a href="#">Đặt phòng</a></li>
-                <li>
-                    <a href="#" id="hoatdonggiaitri">Hoạt động giải trí</a>
-                    <div class="submenu" id="submenu">
-						<ul>
-							<li><a href="#">Tour</a></li>
-							<li><a href="#">Điểm tham quan</a></li>
-						</ul>
-                        
-                        
-                    </div>
-                </li>
-		</ul>
-    </div>
-    <div class="content">
-        <h2>Dashboard</h2>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Tên</th>
-                <th>Email</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>John Doe</td>
-                <td>john@example.com</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jane Smith</td>
-                <td>jane@example.com</td>
-            </tr>
-        </table>
-    </div>
-	
-	
-	
-	
+
+    <aside>
+		<div class="sidebar-header">
+			<img src="pic/logodaidien.png" alt="Logo" class="logo">
+			<p class="username"><?php echo $_SESSION['useradmin']; ?></p>
+    	</div>
+        <ul>
+            <li class="parent-item"> 
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="parent-item"> 
+                <a href="#">Quản lý tài khoản</a>
+                <ul class="submenu"> 
+                    <li><a href="#">Thêm người dùng</a></li>
+                    <li><a href="danhsachtaikhoan.php">Danh sách người dùng</a></li>
+                </ul>
+            </li>
+            <li class="parent-item"> 
+                <a href="#">Quản lý di chuyển</a>
+                <ul class="submenu"> 
+                    <li><a href="#"></a></li>
+                </ul>
+            </li>
+			<li class="parent-item"> 
+                <a href="#">Quản lý phòng</a>
+                <ul class="submenu"> 
+                    <li><a href="#">Danh sách đặt phòng</a></li>
+                </ul>
+            </li>
+			<li class="parent-item"> 
+                <a href="#">Hoạt động giải trí</a>
+                <ul class="submenu"> 
+                    <li><a href="#">Tour</a></li>
+                    <li><a href="#">Điểm tham quan</a></li>
+                </ul>
+            </li>
+        </ul>
+		<a href="dangxuatadmin_controller.php" class="logout-button">
+        <i class="fa-solid fa-right-from-bracket fa-bounce" style="color: #f7f7f8; margin-right: 4px;"></i> Đăng xuất
+    </a>
+    </aside>
+
+    <main>
+		<div class="content-section">
+
+			<?php include("./danhsachtaikhoan.php")?>
+			</div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Trang Quản Trị</p>
+    </footer>
+</body>
 	 <script>
-    const hoatdonggiaitri = document.getElementById('hoatdonggiaitri');
-    const submenu = document.getElementById('submenu');
+        document.addEventListener("DOMContentLoaded", function() {
+            var menuItems = document.querySelectorAll(".menu-item");
+            var contentSections = document.querySelectorAll(".content-section");
 
-    // Bắt sự kiện di chuột vào "Hoạt động giải trí"
-    hoatdonggiaitri.addEventListener('mouseenter', function (event) {
-        // Hiển thị submenu khi di chuột vào
-        submenu.style.display = 'block';
-    });
+            menuItems.forEach(function(item, index) {
+                item.addEventListener("click", function() {
+                    // Ẩn tất cả các phần nội dung
+                    contentSections.forEach(function(section) {
+                        section.style.display = "none";
+                    });
 
-    // Bắt sự kiện di chuột ra submenu
-    submenu.addEventListener('mouseleave', function (event) {
-        // Ẩn submenu khi di chuột ra
-        submenu.style.display = 'none';
-    });
-</script>
-
-
-
-
-
-
-
+                    // Hiển thị phần nội dung tương ứng
+                    contentSections[index].style.display = "block";
+                });
+            });
+        });
     </script>
-</body>
-</html>
-
-
-
-
-
-
-
-</body>
 </html>

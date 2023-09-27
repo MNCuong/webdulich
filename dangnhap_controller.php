@@ -1,4 +1,5 @@
 <?php	
+session_name('client');
 session_start();
 	 	$username= $_POST['username'];
 		$password= $_POST['password'];	
@@ -8,7 +9,7 @@ session_start();
 		$select="SELECT * FROM `acc` where `username`= '$username' and `password`= '$password'";
 		$resutl=mysqli_query($conn,$select);
 		  	if ( mysqli_num_rows($resutl) > 0) {
-				$_SESSION['user'] = $username;
+				$_SESSION['userclient'] = $username;
         		header('Location: index.php');
 			}
 			else {

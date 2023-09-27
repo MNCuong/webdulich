@@ -1,61 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css"  />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<style>
-		a{
-			color: black;
-			font-size: 16px;
+    <meta charset="UTF-8">
+    <title>Login Admin</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.ruleranalytics.com/wp-content/uploads/travel-marketing-statistics-www.ruleranalytics.com_.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: rgba(251, 241, 241, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            width: 320px;
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .input-container {
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .input-container input {
+            width: 90%;
+            padding: 10px;
+            border: none;
+            border-bottom: 2px solid #007bff;
+            background: transparent;
+            font-size: 16px;
+            color: #000;
+            transition: border-color 0.3s ease-in-out;
+            z-index: 1;
+            margin-top: 18px;
+            position: relative;
+        }
+
+        .input-container input:focus {
+            border-color: #e6007e;
+        }
+
+        .input-container label {
+            position: absolute;
+            left: 10px;
+            bottom: 8px;
+            color: #007bff;
+            transition: transform 0.3s, font-size 0.3s, color 0.3s;
+            z-index: 1;
+            pointer-events: none; 
+        }
+
+        .input-container input:focus + label,
+        .input-container input:valid + label {
+            transform: translate(0, -25px) scale(0.8);
+            font-size: 16px;
+            color: #e6007e;
+			background: rgba(251, 241, 241, 0.8); 
 		}
-		body{
-			background-image: url(https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW195Si?ver=6dfb);
-		}
-		.mainlogin{
-			box-shadow: 0 8px 8px black;
-		}
-		input[type="submit"]{
-			background-color: rgba(222,189,7,1.00);
-		}
-		input[type="submit"]:hover{
-			opacity: 0.7;
-		}
-	</style>
+
+        .container input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #e6007e, #007bff);
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .container input[type="submit"]:hover {
+            background: linear-gradient(to right, #007bff, #e6007e);
+        }
+
+        .container a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .container a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-	<script>
-		swal("Xin chao admin;")
-	</script>
-	<form action="dangnhapadmin_controller.php" method="post">
-		<div class="nav">
-		<div class="mainlogin"> 
-			<div class="wrap">
-				<div class="anh">
-					<img src="pic/nendangnhap.jpg">
-				</div>
-
-				<div class="main_login">
-					<p style="font-size: 25px;font-weight: 700;margin-bottom: 0">Đăng nhập hệ thống </p>
-					<input type="text" name="username" placeholder="Tên đăng nhập"><br><br>
-					<input type="password" name="password" placeholder="Mật khẩu"><br><br>
-					<input type="submit" value="Đăng nhập">
-					<br>
-					<a href="dangky.php">Đăng ký</a>
-					<a href="quenmatkhau_form.php">Quên mật khẩu?</a>
-				</div>
-				
-
-			</div>
-			
-			<div class="copyright" style="font-size: 15px;text-align: center">Phần mềm 
-				<img src="https://th.bing.com/th/id/OIP.c_TM8d_9EYJtmMEwNmZ19AAAAA?w=180&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" style="width: 15px;  ">
-				2023 Code bởi Team MNCường
-			</div>
-		</div>
-		 	
-	</div>
-	</form>
+    <div class="container">
+        <h2>Đăng nhập Admin</h2>
+        <form action="dangnhapadmin_controller.php" method="post">
+            <div class="input-container">
+                <input type="text" id="username" name="username" required>
+                <label for="username">Tên đăng nhập</label>
+            </div>
+            <div class="input-container">
+                <input type="password" id="password" name="password" required>
+                <label for="password">Mật khẩu</label>
+            </div>
+            <input type="submit" value="Đăng nhập">
+        </form>
+        <p style="color: black">Chưa có tài khoản? <a href="dangky.php">Đăng ký ngay</a></p>
+        <a href="quenmatkhau_form.php">Quên mật khẩu?</a>
+    </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
@@ -11,6 +11,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 	<style>
+		
 		body{
 			margin: 0;
 			padding: 0;
@@ -33,9 +34,7 @@
 			display: flex;
 			background-color: linear-gradient(90deg, rgba(2,0,36,1), rgba(241,242,245,1) , rgba(0,212,255,1));
 			justify-content: center;
-    align-items: center;
-
-			
+    		align-items: center;
 		}
 		.child1_content img{
 			width: 80%;
@@ -139,17 +138,88 @@
 		.container-fluid{
 			margin: 0;
 			padding: 0;
-			margin-top: 12px;
+			z-index: -2;
+		}
+		
+		.khoi:hover{
+			transform: scale(1.01);
+			cursor: pointer;
 			
-		}
-		.head{
-			margin-top:100; 
-		}
+			border-radius: 8px;
 		
-		
+		}
+		.search {
+            display: flex;
+            width: 80%;
+            margin: 0 auto;
+            padding: 12px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			
+           
+
+
+
+        }
+
+        .mainsearch {
+            margin: 0 auto;
+            width: 90%;
+		}
+
+        .timkiem {
+            width: 90%;
+            padding: 8px;
+			border: 1px solid black;
+			border-radius: 24px;
+			outline-color: rgba(12,98,207,1.00);
+			outline-offset: inherit;
+        }
+
+        .tim {
+            float: right;
+            padding: 10px;
+            background-color: rgba(17, 190, 231, 1.00);
+            border-radius: 8px;
+            border: none;
+        }
+
+        .tim:hover {
+            opacity: 0.7;
+            cursor: pointer;
+        }
 	
 	</style>
 </head>
+	
+	<?php	
+		$db="anh";
+		$conn=new mysqli("localhost","root","",$db) or die ("Không connect đc với máy chủ");//tạo kết nối với server
+		
+				$select = "SELECT * FROM `anhhh` where `loaiphong`='VIP'";
+				$result = mysqli_query($conn, $select);
+				$stt_hang=0;
+			while($row = mysqli_fetch_object($result))
+			{
+			
+			$stt_hang++;
+			$id_hang[$stt_hang]=$row->id_phong;
+			$price0[$stt_hang]=$row->price;
+			$description0[$stt_hang]=$row->description;
+			$anhphong[$stt_hang]=$row->anhphong;
+			$tinhtrang[$stt_hang]=$row->tinhtrang;
+			$diadiem[$stt_hang]=$row->diadiem;
+			
+			
+		}
+	$tong_bg = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `anhhh`"));
+	mysqli_close($conn);
+	
+	
+	
+		
+	
+	?>
 <body>
 	<div class="container-fluid head">
 		
@@ -188,6 +258,28 @@
         </div>
 	</div>
 	<div class="container-fluid">
+	<div class="search">
+                <div class="mainsearch">
+                    <input type="search" placeholder="Tìm kiếm" class="timkiem">
+                    <input type="button" value="Tìm Kiếm" class="tim">
+                </div>
+            </div>
+		
+		
+	<div class="content2" style="margin-bottom: 30px;">
+		<div class="content21">
+		        <h2><strong>Các chuyến bay sắp tới </strong></h2>
+
+		</div>
+		
+	</div>
+		<div class="content2"style="margin-bottom: 30px;">
+		<div class="content21">
+		        <h2><strong>Các tour du lịch </strong></h2>
+
+		</div>
+		
+	</div>
 	<div class="content2">
 		
 			<div class="content21">
@@ -196,7 +288,6 @@
 					<button id="quocte-button">Quốc tế</button>
 			</div>
 			<div class="image-container" id="image-container">
- <!-- Ảnh sẽ được hiển thị ở đây sau khi bấm nút -->
 
 			</div>
 		</div>
@@ -204,51 +295,27 @@
 		<br>
 	<div class="content2">
 		<div class="content21">
-        <h2><strong>Top phòng tốt nhất</strong></h2>
-        <div class="image-description">
-            <div class="image">
+        <h2><strong>Top phòng VIP</strong></h2>
+			<?php
+			  for ($i = 1; $i <= 4 ; $i++)
+			  {
+				 
+			?>
+        <div class="image-description" style="height: 300px; ">
+            <div class="image" >
                 <a href="">
-                    <img src="https://th.bing.com/th/id/OIP.FuxFAIWO489wCFrCAnX_ewHaEK?w=303&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+                    <img src="images/<?php echo $anhphong[$i]?>" alt="" style="height: 300px;">
                 </a>
             </div>
-            <div class="description">
-                <p>Đây là mô tả của hình ảnh. Bạn có thể thêm một số văn bản ở đây để mô tả hình ảnh.</p>
-				<a href=""><button>Đặt phòng</button></a>
+            <div class="description" style="margin-left: 40px;">
+				<h4><strong>Mô tả</strong></h4>
+                <p><?php echo $description0[$i] ?></p>
+				<a href="danhsachphongks.php"><button>Đặt phòng</button></a>
             </div>
         </div>
-			<div class="image-description">
-            <div class="image">
-                <a href="">
-                    <img src="https://th.bing.com/th/id/OIP.s1dDG8gYZBkT0Lk4zER6TwHaE7?w=260&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
-                </a>
-            </div>
-            <div class="description">
-                <p>Đây là mô tả của hình ảnh. Bạn có thể thêm một số văn bản ở đây để mô tả hình ảnh.</p>
-				<a href=""><button>Đặt phòng</button></a>
-            </div>
-        </div>
-			<div class="image-description">
-            <div class="image">
-                <a href="">
-                    <img src="https://th.bing.com/th/id/OIP.4Ry6UELx2z7s1MokYdLdtAHaE8?w=251&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
-                </a>
-            </div>
-            <div class="description">
-                <p>Đây là mô tả của hình ảnh. Bạn có thể thêm một số văn bản ở đây để mô tả hình ảnh.</p>
-				<a href=""><button>Đặt phòng</button></a>
-            </div>
-        </div>
-			<div class="image-description">
-            <div class="image">
-                <a href="">
-                    <img src="https://th.bing.com/th/id/OIP.wj3rd_IDTtw758TqJnfnlgHaEp?w=266&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
-                </a>
-            </div>
-            <div class="description">
-                <p>Đây là mô tả của hình ảnh. Bạn có thể thêm một số văn bản ở đây để mô tả hình ảnh.</p>
-				<a href=""><button>Đặt phòng</button></a>
-            </div>
-        </div>
+			 <?php  
+				  }
+				  ?>
     </div>
 	</div>
 		<br>
@@ -258,50 +325,35 @@
 	</div>
 		<br>
 
-	<div class="content2" >
-		
-		<div class="khoi" >
-				 <img src="pic/OIP (1).jpg" alt="Card image">
+	<div class="content2" style="justify-content: space-between;" >
+		<?php
+			  for ($i = 1; $i <= 3 ; $i++)
+			  {
+				 
+			?>
+		<div class="khoi"  style=" width: 32%;">
+				 <img src="images/<?php echo $anhphong[$i]?>" alt="Card image" style="height: 300px; width: 100%; border-radius: 8px;">
 				 <div class="card-body">
 					<h4 class="card-title">Hà Nội</h4>
-					<p class="card-text">Some example text.</p>
+					<p class="card-text">Nhanh tay nào!</p>
 					
 					 <a href=""><button>Đặt phòng</button></a>
 				 </div>
 		</div>
-		<div class="khoi" >
-				 <img src="pic/OIP (1).jpg" alt="Card image">
-				 <div class="card-body">
-					<h4 class="card-title">Đà Nẵng</h4>
-					<p class="card-text">Some example text.</p>
-					
-					 <a href=""><button>Đặt phòng</button></a>
-				 </div>
-		</div>
-		<div class="khoi" >
-				 <img src="pic/OIP (1).jpg" alt="Card image">
-				 <div class="card-body">
-					<h4 class="card-title">Thành phố Hồ Chí Minh</h4>
-					<p class="card-text">Some example text.</p>
-					
-					 <a href=""><button>Đặt phòng</button></a>
-				 </div>
-		</div>
-	
-	
+		<?php
+			  }
+		?>
+
 	</div>
 	<br>
 	<!--script content2 fisrt-->
 	<script>
-		// JavaScript để xử lý sự kiện click
 		const trongNuocButton = document.getElementById("trongnuoc-button");
 		const quocTeButton = document.getElementById("quocte-button");
 		const imageContainer = document.getElementById("image-container");
 		trongNuocButton.addEventListener("click", function () {
-			// Xóa màu nền của nút Trong nước (nếu có)
 			quocTeButton.style.backgroundColor = "#C8CCCE";
 
-			// Thay đổi màu nền của nút Quốc tế
 			trongNuocButton.style.backgroundColor = "#00aaff";
 
 

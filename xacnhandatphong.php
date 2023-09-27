@@ -22,11 +22,6 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
-            
-        }
-
-        .confirmation-form:hover {
-            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .confirmation-form h1 {
@@ -38,7 +33,6 @@
             display: block;
             font-size: 16px;
             margin-bottom: 10px;
-			
         }
 
         .confirmation-form input[type="text"], input[type="date"] {
@@ -63,18 +57,55 @@
         .confirmation-form button:hover {
             background-color: #e74c3c;
         }
+
+        .confirmation-message {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #fff;
+        }
     </style>
 </head>
+	<?php
+       if (isset($_GET['id_phong']) || isset($_GET['diadiem'])) {
+		$phongId = $_GET['id_phong'];
+		   $diadiem= $_GET['diadiem'];
+		
+		
+		} else {
+			echo "Không tìm thấy thông tin phòng";
+		}
+	?>
 <body>
     <div class="confirmation-form">
         <h1>Xác Nhận Đặt Phòng</h1>
-        <label for="tenkhach">Tên khách hàng:</label>
-        <input type="text" id="tenkhach" name="tenkhach" required>
-        <label for="ngayden">Ngày đến:</label>
-        <input type="date" id="ngayden" name="ngayden" required>
-        <label for="ngaydi">Ngày đi:</label>
-        <input type="date" id="ngaydi" name="ngaydi" required>
-        <button>Xác nhận</button>
+        <form action="xacnhandatphong_controller.php?id_phong=<?php echo $phongId?>&diadiem=<?php echo $diadiem?>" method="post" onsubmit="return validateForm();">
+			
+            <label for="tenkhach">Tên khách hàng:</label>
+            <input type="text" id="tenkhach" name="tenkhach"  required>
+            <label for="ngayden">Ngày đến:</label>
+            <input type="date" id="ngayden" id="ngayden" name="ngayden" required>
+            <label for="ngaydi">Ngày đi:</label>
+            <input type="date" id="ngaydi" id="ngayden" name="ngaydi" required>
+			<p> Địa điểm: <?php echo($diadiem)?></p>
+	        <button type="submit">Xác nhận</button>
+        </form>
     </div>
+   
 </body>
+	
+	<script>
+	function validateForm() {
+		var ngayden = document.getElementById("ngayden").value;
+		var ngaydi = document.getElementById("ngaydi").value;
+
+		if (ngayden > ngaydi) {
+			alert("Ngày đi phải sau ngày đến.");
+			return false;
+		}
+
+		return true;
+	}
+	</script>
+
+	
 </html>
