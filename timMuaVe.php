@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/css/chuyenDi.css">
+    <link rel="stylesheet" href="css/chuyenDi.css">
 </head>
 
 <body>
@@ -21,28 +21,31 @@
         $diemKhoiHanh[] = $row['diemKhoiHanh'];
         $diemDen[] = $row['diemDen'];
     }
-    $conn->close(); ?>
+    $conn->close();
+
+    $diemKhoiHanh = array_unique($diemKhoiHanh);
+    $diemDen = array_unique($diemDen); ?>
 
     <datalist id="diemKhoiHanh">
         <?php foreach ($diemKhoiHanh as $diem) { ?>
-            <option value="<?php echo $diem; ?>">
-                <?php echo $diem; ?>
-            </option>
+        <option value="<?php echo $diem; ?>">
+            <?php echo $diem; ?>
+        </option>
         <?php } ?>
     </datalist>
     <datalist id="diemDen">
         <?php foreach ($diemDen as $diem) { ?>
-            <option value="<?php echo $diem; ?>">
-                <?php echo $diem; ?>
-            </option>
+        <option value="<?php echo $diem; ?>">
+            <?php echo $diem; ?>
+        </option>
         <?php } ?>
     </datalist>
 
-    <div class="cdContainer cdMargin cdBorder cdPadding" style="flex-direction: column;">
+    <div class="cdContainer cdMargin cdBorder cdPadding cdMarginTop" style="flex-direction: column;">
         <p class="cdHeading">Tìm mua vé</p>
 
         <form action="danhSachVe.php" method="post">
-            <div class="cdContainer">
+            <div class="cdContainer" style="flex-direction: column;">
                 <div class="cdRow">
                     <div class="cdInputGroup">
                         <span class="cdInputText">Phương tiện</span>
@@ -54,7 +57,8 @@
                     </div>
                     <div class="cdInputGroup">
                         <span class="cdInputText">Điểm khởi hành</span>
-                        <input type="text" class="cdInputInput" name="diemKhoiHanh" list="diemKhoiHanh" autocomplete="on">
+                        <input type="text" class="cdInputInput" name="diemKhoiHanh" list="diemKhoiHanh"
+                            autocomplete="on">
                     </div>
                     <div class="cdInputGroup">
                         <span class="">Điểm đến</span>
@@ -77,7 +81,9 @@
                     </div>
                 </div>
 
-                <button type="submit" class="button">Tìm</button>
+                <div class="cdRow">
+                    <button type="submit" class="cdButton">Tìm</button>
+                </div>
             </div>
         </form>
     </div>

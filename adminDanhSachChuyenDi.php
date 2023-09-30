@@ -14,12 +14,12 @@
 <body>
     <div class="cdContainer cdMargin" style="flex-direction: column;">
         <p class="cdHeading">Danh sách chuyến đi</p>
-        <div class="cdRow">
+        <div class="cdRow" style="justify-content: start;">
             <form action="themChuyenDi.php" method="post">
                 <button type="submit" class="cdButton">Thêm chuyến đi</button>
             </form>
         </div>
-        <div class=" cdRow">
+        <div class=" cdRow" style="justify-content: start;">
             <div class="cdDropdown">
                 <button class="cdButton">
                     <?php
@@ -53,7 +53,7 @@
                     <thead>
                         <tr>
                             <th>
-                                <button type="submit" class="cdButton">
+                                <button type="submit" class="cdButton" onclick="return confirm('Bạn có xác nhận xoá những chuyến đi đã chọn?')">
                                     <i class="fa fa-trash"></i>
                             </th>
                             <th>Số thứ tự</th>
@@ -126,7 +126,7 @@
                                         <i class="fa fa-edit cdButton"></i></a>
                                 </td>
                                 <td>
-                                    <a href="controllerXoaChuyenDi.php?id=<?php echo $id[$i] ?>" class="cdButton">
+                                    <a href="controllerXoaChuyenDi.php?id=<?php echo $id[$i] ?>" class="cdButton" onclick="return confirm('Bạn có chắc chắn muốn xoá?')">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
@@ -147,19 +147,7 @@
             }
             ?>
         </ul>
-
-
     </div>
-
-    <script>
-        const mySelect = document.getElementById("my_select");
-        const myLink = document.getElementById("my_link");
-
-        mySelect.addEventListener("change", function() {
-            myLink.href = mySelect.value;
-        });
-    </script>
-
 </body>
 
 </html>

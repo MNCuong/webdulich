@@ -14,7 +14,7 @@
     <!-- <?php include './header.php'; ?> -->
 
     <div class="cdContainer cdMarginTop cdMargin" style="flex-direction: column;">
-        <div class="cdRow">
+        <div class="cdRow" style="justify-content: start;">
             <a href="index_muaVe.php" class="cdButton">Tìm vé khác</a>
         </div>
         <p class="cdHeading">Danh sách vé</p>

@@ -24,6 +24,7 @@
 .cdRow {
     display: flex;
     margin: 10px 0px;
+    justify-content: center;
 }
 
 .cdBorder {

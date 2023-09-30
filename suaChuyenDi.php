@@ -28,6 +28,38 @@
     $giaVe = $row->giaVe;
     ?>
 
+    <?php
+    $db = "anh";
+    $table = "chuyendi";
+    $conn = new mysqli("localhost", "root", "", $db);
+
+    $result = $conn->query("SELECT * FROM $table ");
+
+    foreach ($result as $row) {
+        $listDiemKhoiHanh[] = $row['diemKhoiHanh'];
+        $listDiemDen[] = $row['diemDen'];
+    }
+    $conn->close();
+
+    $listDiemKhoiHanh = array_unique($listDiemKhoiHanh);
+    $listDiemDen = array_unique($listDiemDen); ?>
+
+
+    <datalist id="diemKhoiHanh">
+        <?php foreach ($listDiemKhoiHanh as $diem) { ?>
+            <option value="<?php echo $diem; ?>">
+                <?php echo $diem; ?>
+            </option>
+        <?php } ?>
+    </datalist>
+    <datalist id="diemDen">
+        <?php foreach ($listDiemDen as $diem) { ?>
+            <option value="<?php echo $diem; ?>">
+                <?php echo $diem; ?>
+            </option>
+        <?php } ?>
+    </datalist>
+
     <div class="cdContainer cdMargin">
         <form action="adminDanhSachChuyenDi.php" method="post">
             <button type="submit" class="cdButton">Danh sách chuyến chuyến đi</button>
@@ -43,18 +75,18 @@
                     <div class="cdInputGroup">
                         <span class="cdInputText">Phương tiện</span>
                         <select name="phuongTien" onchange="selectPhuongTien()" class="cdInputInput">
-                            <option value="1" <?php if ($phuongTien=='1' ) echo ("selected") ?>>Máy bay</option>
-                            <option value="2" <?php if ($phuongTien=='2' ) echo ("selected") ?>>Tàu hoả</option>
-                            <option value="3" <?php if ($phuongTien=='3' ) echo ("selected") ?>>Xe khách</option>
+                            <option value="1" <?php if ($phuongTien == '1') echo ("selected") ?>>Máy bay</option>
+                            <option value="2" <?php if ($phuongTien == '2') echo ("selected") ?>>Tàu hoả</option>
+                            <option value="3" <?php if ($phuongTien == '3') echo ("selected") ?>>Xe khách</option>
                         </select>
                     </div>
                     <div class="cdInputGroup">
                         <span class="cdInputText">Điểm khởi hành</span>
-                        <input type="text" name="diemKhoiHanh" value="<?php echo $diemKhoiHanh ?>" class="cdInputInput">
+                        <input type="text" name="diemKhoiHanh" value="<?php echo $diemKhoiHanh ?>" class="cdInputInput" list="diemKhoiHanh" autocomplete="on">
                     </div>
                     <div class="cdInputGroup">
                         <span class="cdInputText">Điểm đến</span>
-                        <input type="text" name="diemDen" value="<?php echo $diemDen ?>" class="cdInputInput">
+                        <input type="text" name="diemDen" value="<?php echo $diemDen ?>" class="cdInputInput" list="diemDen" autocomplete="on">
                     </div>
                 </div>
 

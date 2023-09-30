@@ -10,6 +10,38 @@
 </head>
 
 <body>
+    <?php
+    $db = "anh";
+    $table = "chuyendi";
+    $conn = new mysqli("localhost", "root", "", $db);
+
+    $result = $conn->query("SELECT * FROM $table ");
+
+    foreach ($result as $row) {
+        $diemKhoiHanh[] = $row['diemKhoiHanh'];
+        $diemDen[] = $row['diemDen'];
+    }
+    $conn->close();
+
+    $diemKhoiHanh = array_unique($diemKhoiHanh);
+    $diemDen = array_unique($diemDen); ?>
+
+
+    <datalist id="diemKhoiHanh">
+        <?php foreach ($diemKhoiHanh as $diem) { ?>
+            <option value="<?php echo $diem; ?>">
+                <?php echo $diem; ?>
+            </option>
+        <?php } ?>
+    </datalist>
+    <datalist id="diemDen">
+        <?php foreach ($diemDen as $diem) { ?>
+            <option value="<?php echo $diem; ?>">
+                <?php echo $diem; ?>
+            </option>
+        <?php } ?>
+    </datalist>
+
     <div class="cdContainer cdMargin">
         <form action="adminDanhSachChuyenDi.php" method="post">
             <button type="submit" class="cdButton">Danh sách chuyến chuyến đi</button>
@@ -33,11 +65,11 @@
 
                     <div class="cdInputGroup">
                         <span class="cdInputText">Điểm khởi hành</span>
-                        <input type="text" class="cdInputInput" name="diemKhoiHanh">
+                        <input type="text" class="cdInputInput" name="diemKhoiHanh" list="diemKhoiHanh" autocomplete="on">
                     </div>
                     <div class="cdInputGroup">
                         <span class="cdInputText">Điểm đến</span>
-                        <input type="text" class="cdInputInput" name="diemDen">
+                        <input type="text" class="cdInputInput" name="diemDen" list="diemDen" autocomplete="on">
                     </div>
                 </div>
 
@@ -57,7 +89,7 @@
                 </div>
 
                 <div class="cdRow">
-                    <button type="submit" class="cdButton">Thêm chuyến đi</button>
+                    <button type="submit" class="cdButton" onclick="return confirm('Bạn có xác nhận thêm chuyến đi?')">Thêm chuyến đi</button>
                 </div>
             </div>
     </form>
