@@ -8,7 +8,7 @@
             background-color: #f2f2f2;
         }
 
-        .container {
+        .containerqmk {
             max-width: 400px;
             margin: 0 auto ;
             padding: 20px;
@@ -55,8 +55,8 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Quên mật khẩu</h2>
+    <div class="containerqmk">
+        <h2>Đổi mật khẩu</h2>
         <form action="quenmatkhau_controller.php" method="post">
             <div class="form-group">
                 <label for="email">Địa chỉ Email:</label>

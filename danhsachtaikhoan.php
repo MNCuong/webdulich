@@ -256,7 +256,7 @@
 		  <td colspan="9" align="">Danh mục tài khoản</td>
 		</tr>
 		<tr align="center">
-		  <td width="38">&nbsp;</td>
+		  <td width="38" id="check[]">&nbsp;</td>
 		  <td width="38">STT</td>
 		  <td width="83">Username</td>
 		  <td width="83">Password</td>
@@ -272,9 +272,10 @@
 				  if($i>$tong_bg){
 			  break;
 		  }
+		  
 			?>
 		<tr>	
-		  <td><input name="selected_id[]" value="<?php echo $id_tk[$i] ?>" type="checkbox"></td>
+		  <td><input name="selected_id[]"  id="checks> "value="<?php echo $id_tk[$i] ?>" type="checkbox"></td>
 		  <td><?php echo $i?></td>
 		  <td><?php echo $username[$i]?></td>
 		  <td><?php echo $password[$i]?></td>
@@ -320,6 +321,31 @@
             checkboxList[i].addEventListener('change', updateSelectedIds);
         }
     </script>
+	
+	<?php
+    // Kiểm tra xem người dùng có quyền là Admin hay không
+    if ($_SESSION['role'] === "Admin") {
+        // Nếu là Admin, ẩn các checkbox
+        echo '<style>
+                input[name="selected_id[]"] {
+                    display: none;
+                }
+                #check[] {
+                    display: none;
+                }
+              </style>';
+    }
+	else{
+		 echo '<style>
+                input[name="selected_id[]"] {
+                    display: block;
+                }
+                #check[] {
+                    display: block;
+                }
+              </style>';
+	}
+?>
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
 		  var searchInput = document.getElementById("searchInput");

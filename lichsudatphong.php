@@ -1,11 +1,4 @@
-	<?php include './header.php';
 
-
-if (!isset($_SESSION['userclient'])) {
-    header('Location: dangnhapclient.php');
-    exit;
-}
-?>
 <!doctype html>
 <html>
 <head>
@@ -16,7 +9,6 @@ if (!isset($_SESSION['userclient'])) {
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
-			font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 		}
 	
 h1 {
@@ -24,10 +16,7 @@ h1 {
     font-size: 36px; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
-		body{
-			background-image: url(https://kconceptvn.com/wp-content/uploads/2020/04/hotel-photography-chup-anh-khach-san-khach-san-bamboo-sapa-hotel-18-1024x683.jpg);
-			background-size: cover;
-		}
+		
 
 table {
     width: 80%; 
@@ -35,7 +24,7 @@ table {
     border: 2px solid #333;
     border-radius: 10px; 
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
-	background:rgba(239,235,235,1.00);
+	background:#fff;
 }
 
 th {
@@ -75,7 +64,7 @@ a[href="addphong.php"] button:hover,a[href="indexadmin.php"] button:hover {
     background-color: #E4482D;
 	
 }
-ul {
+ul>.chiso {
 			list-style-type: none;
 			padding: 0;
 			text-align: center;
@@ -86,7 +75,7 @@ ul {
 			margin: 5px;
 		}
 
-		ul li a {
+		.chiso {
 			text-decoration: none;
 			color: #333;
 			background: linear-gradient(135deg, #FF5733, #FF7044); 
@@ -95,7 +84,7 @@ ul {
 			transition: background 0.3s ease-in-out;
 		}
 
-		ul li a:hover {
+		.chiso:hover {
 			background: linear-gradient(135deg, #FF7044, #FF5733); 
 			color: white;
 			
@@ -106,7 +95,6 @@ ul {
 		
 		.main{
 			display: flex;
-			padding-top: 150px;
 			flex-direction: column;
 		}
 		
@@ -192,12 +180,11 @@ ul {
 	<ul>
 			<?php
 				for ($i = 1; $i <= $soluongtrang; $i++) {
-					echo "<li><a href='lichsudatphong.php?page=$i'>$i</a></li> ";
+					echo "<li><a class='chiso' href='lichsudatphong.php?page=$i'>$i</a></li> ";
 				}
 			?>
 		</ul></div>
 	
 	</div>
 </body>
-	<?php include('footer.php')?>
 </html>

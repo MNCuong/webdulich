@@ -62,6 +62,8 @@ if (!isset($_SESSION['useradmin'])) {
             padding: 10px;
             float: left;
 			height: 100vh;
+			font-size: 16px;
+			
         }
 
         aside ul {
@@ -157,8 +159,8 @@ if (!isset($_SESSION['useradmin'])) {
        
     </header>
 
-    <aside>
-		<div class="sidebar-header">
+    <aside >
+		<div class="sidebar-header" >
 			<img src="pic/logodaidien.png" alt="Logo" class="logo">
 			<p class="username"><?php echo $_SESSION['useradmin']; ?></p>
     	</div>
@@ -169,27 +171,27 @@ if (!isset($_SESSION['useradmin'])) {
             <li class="parent-item"> 
                 <a href="#">Quản lý tài khoản</a>
                 <ul class="submenu"> 
-                    <li><a href="#">Thêm người dùng</a></li>
-                    <li><a href="danhsachtaikhoan.php">Danh sách người dùng</a></li>
+                    <li><a href="indexadmin.php?danhmuc=thongtinnguoidung">Quản lý người dùng</a></li>
+                    <li><a href="indexadmin.php?danhmuc=danhsachtaikhoan">Danh sách người dùng</a></li>
                 </ul>
             </li>
             <li class="parent-item"> 
                 <a href="#">Quản lý di chuyển</a>
                 <ul class="submenu"> 
-                    <li><a href="adminDanhSachChuyenDi.php"> chuyen di</a></li>
+                    <li><a href="indexadmin.php?danhmuc=danhsachchuyen">Chuyến đi</a></li>
                 </ul>
             </li>
 			<li class="parent-item"> 
                 <a href="#">Quản lý phòng</a>
                 <ul class="submenu"> 
-                    <li><a href="#">Danh sách đặt phòng</a></li>
+                    <li><a href="indexadmin.php?danhmuc=danhsachdatphong">Danh sách đặt phòng</a></li>
                 </ul>
             </li>
 			<li class="parent-item"> 
                 <a href="#">Hoạt động giải trí</a>
                 <ul class="submenu"> 
-                    <li><a href="#">Tour</a></li>
-                    <li><a href="#">Điểm tham quan</a></li>
+                    <li><a href="indexadmin.php?danhmuc=tour">Tour</a></li>
+                    <li><a href="indexadmin.php?danhmuc=diadiem">Điểm tham quan</a></li>
                 </ul>
             </li>
         </ul>
@@ -200,9 +202,8 @@ if (!isset($_SESSION['useradmin'])) {
 
     <main>
 		<div class="content-section">
-
-			<?php include("./danhsachtaikhoan.php")?>
-			</div>
+			<?php include('main.php')?>
+</div>
     </main>
 
     <footer>
