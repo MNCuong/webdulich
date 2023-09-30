@@ -6,26 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        .row {
-            padding: 20px;
-        }
-
-        .col {
-            padding: 0px 30px 0px 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    <link rel="stylesheet" href="css/chuyenDi.css">
 </head>
 
 <body>
@@ -47,80 +28,67 @@
     $giaVe = $row->giaVe;
     ?>
 
-    <div class="container d-flex marginTop">
+    <div class="cdContainer cdMargin">
         <form action="adminDanhSachChuyenDi.php" method="post">
-            <button type="submit" class="button">Danh sách chuyến chuyến đi</button>
+            <button type="submit" class="cdButton">Danh sách chuyến chuyến đi</button>
         </form>
     </div><br>
 
-    <div class="container" style="border-style: solid; border-width: 1px; border-radius: 10px;">
-        <div class="row text-uppercase text-center fs-1">
-            <p>Sửa Chuyến đi</p>
-        </div>
+    <div class="cdContainer cdBorder cdPadding cdMargin" style="flex-direction: column;">
+        <p class="cdHeading">Sửa Chuyến đi</p>
 
         <form action="controllerSuaChuyenDi.php?id=<?php echo $id ?>" method="post">
-            <div class="row">
-                <div class="col">
-                    <span class="input-group-text">Phương tiện</span>
-                    <select name="phuongTien" onchange="selectPhuongTien()" class="form-control">
-                        <option value="1" <?php if ($phuongTien == '1') echo ("selected") ?>>Máy bay</option>
-                        <option value="2" <?php if ($phuongTien == '2') echo ("selected") ?>>Tàu hoả</option>
-                        <option value="3" <?php if ($phuongTien == '3') echo ("selected") ?>>Xe khách</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Điểm khởi hành</span>
-                        <input type="text" name="diemKhoiHanh" value="<?php echo $diemKhoiHanh ?>" class="form-control">
+            <div class="cdContainer" style="flex-direction: column;">
+                <div class="cdRow">
+                    <div class="cdInputGroup">
+                        <span class="cdInputText">Phương tiện</span>
+                        <select name="phuongTien" onchange="selectPhuongTien()" class="cdInputInput">
+                            <option value="1" <?php if ($phuongTien=='1' ) echo ("selected") ?>>Máy bay</option>
+                            <option value="2" <?php if ($phuongTien=='2' ) echo ("selected") ?>>Tàu hoả</option>
+                            <option value="3" <?php if ($phuongTien=='3' ) echo ("selected") ?>>Xe khách</option>
+                        </select>
+                    </div>
+                    <div class="cdInputGroup">
+                        <span class="cdInputText">Điểm khởi hành</span>
+                        <input type="text" name="diemKhoiHanh" value="<?php echo $diemKhoiHanh ?>" class="cdInputInput">
+                    </div>
+                    <div class="cdInputGroup">
+                        <span class="cdInputText">Điểm đến</span>
+                        <input type="text" name="diemDen" value="<?php echo $diemDen ?>" class="cdInputInput">
                     </div>
                 </div>
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Điểm đến</span>
-                        <input type="text" name="diemDen" value="<?php echo $diemDen ?>" class="form-control">
+
+                <div class="cdRow">
+                    <div class="cdInputGroup">
+                        <span class="cdInputText">Ngày đi</span>
+                        <input type="date" name="ngayDi" value="<?php echo $ngayDi ?>" class="cdInputInput">
                     </div>
+                    <div class="cdInputGroup">
+                        <span class="cdInputText">Số hành khách</span>
+                        <input type="number" name="soHanhKhach" value="<?php echo $soHanhKhach ?>" class="cdInputInput">
+                    </div>
+                    <div class="cdInputGroup">
+                        <span class="cdInputText">Giá vé</span>
+                        <input type="number" name="giaVe" value="<?php echo $giaVe ?>" class="cdInputInput">
+                    </div>
+                </div>
+
+                <div class="cdRow">
+                    <button type="submit" class="cdButton">Lưu chuyến đi</button>
                 </div>
             </div>
+        </form>
 
-            <div class="row">
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Ngày đi</span>
-                        <input type="date" name="ngayDi" value="<?php echo $ngayDi ?>" class="form-control">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Số hành khách</span>
-                        <input type="number" name="soHanhKhach" value="<?php echo $soHanhKhach ?>" class="form-control">
-                    </div>
-                </div>
-                <div class="col ">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Giá vé</span>
-                        <input type="number" name="giaVe" value="<?php echo $giaVe ?>" class="form-control">
-                    </div>
-                </div>
-            </div>
+        <script>
+            function selectPhuongTien() {
+                // Lấy giá trị đã chọn trong dropdown button
+                var phuongTien = document.querySelector("select").value;
 
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <button type="submit" class="button">Lưu chuyến đi</button>
-                </div>
-            </div>
-    </div>
-    </form>
-
-    <script>
-        function selectPhuongTien() {
-            // Lấy giá trị đã chọn trong dropdown button
-            var phuongTien = document.querySelector("select").value;
-
-            // Thay đổi giá trị của biến
-            var $variable = document.querySelector("#variable");
-            $variable.innerHTML = phuongTien;
-        }
-    </script>
+                // Thay đổi giá trị của biến
+                var $variable = document.querySelector("#variable");
+                $variable.innerHTML = phuongTien;
+            }
+        </script>
 </body>
 
 </html>

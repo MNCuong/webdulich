@@ -6,62 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/chuyenDi.css">
 
 </head>
 
 <body>
     <!-- <?php include './header.php'; ?> -->
-    <div class="container" style="margin-top: 100px;">
-        <!-- Carousel -->
-        <div id="demo" class="carousel slide" data-bs-ride="carousel">
-            <!-- Indicators/dots -->
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-            </div>
 
-            <!-- The slideshow/carousel -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg/1200px-Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg" alt="Los Angeles" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg/1200px-Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg" alt="Chicago" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg/1200px-Vietnam_Airlines_Boeing_787-9_VN-A869_SGN_10022017.jpg" alt="New York" class="d-block w-100">
-                </div>
-            </div>
-
-            <!-- Left and right controls/icons -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
+    <div class="cdContainer cdMarginTop cdMargin" style="flex-direction: column;">
+        <div class="cdRow">
+            <a href="index_muaVe.php" class="cdButton">Tìm vé khác</a>
         </div>
-    </div>
-
-
-
-    <div class="container" style="padding-top:  50px;">
-        <div class="row">
-            <div class="col d-flex justify-content">
-                <a href="index_muaVe.php" class="button">Tìm vé khác</a>
-            </div>
-        </div>
-        <div class="row text-uppercase text-center fs-1">
-            <p>Danh sách vé</p>
-        </div>
+        <p class="cdHeading">Danh sách vé</p>
     </div>
 
     <?php
@@ -111,55 +67,54 @@
             break;
         }
     ?>
-        <div class="container marginTop" style="border-style: solid; border-width: 1px; border-radius: 10px;">
-            <div class="row">
-                <div class="col">
-                    <span class="input-group-text">Phương tiện</span>
-                    <select name="phuongTien" onchange="selectPhuongTien()" class="form-control" disabled>
-                        <option value="1" <?php if ($qphuongTien == '1') echo ("selected") ?>>Máy bay</option>
-                        <option value="2" <?php if ($qphuongTien == '2') echo ("selected") ?>>Tàu hoả</option>
-                        <option value="3" <?php if ($qphuongTien == '3') echo ("selected") ?>>Xe khách</option>
-                    </select>
+        <div class="cdContainer cdBorder cdPadding cdMargin" style="flex-direction: column;">
+            <div class="cdRow">
+                <div class="cdInputGroup">
+                    <span class="cdInputText">Phương tiện</span>
+                    <?php
+                    switch ($qphuongTien) {
+                        case '1':
+                            $phuongTien = "Máy bay";
+                            break;
+                        case '2':
+                            $phuongTien = "Tàu hoả";
+                            break;
+                        case '3':
+                            $phuongTien = "Xe khách";
+                            break;
+                        default:
+                            $phuongTien = "Lỗi";
+                            break;
+                    } ?>
+                    <input type="text" class="cdInputInput" name="phuongTien" value="<?php echo $phuongTien ?>" disabled>
                 </div>
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Điểm khởi hành</span>
-                        <input type="text" class="form-control" name="diemKhoiHanh" value="<?php echo $diemKhoiHanh[$i] ?>" disabled>
-                    </div>
+                <div class="cdInputGroup">
+                    <span class="cdInputText">Điểm khởi hành</span>
+                    <input type="text" class="cdInputInput" name="diemKhoiHanh" value="<?php echo $diemKhoiHanh[$i] ?>" disabled>
                 </div>
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Điểm đến</span>
-                        <input type="text" class="form-control" name="diemDen" value="<?php echo $diemDen[$i] ?>" disabled>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Ngày đi</span>
-                        <input type="date" class="form-control" name="ngayDi" value="<?php echo $ngayDi[$i] ?>" disabled>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Số hành khách</span>
-                        <input type="number" class="form-control" name="soHanhKhach" value="<?php echo $qsoHanhKhach ?>" disabled>
-                    </div>
-                </div>
-                <div class="col ">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Giá vé</span>
-                        <input type="number" class="form-control" name="giaVe" value="<?php echo ($qsoHanhKhach * $giaVe[$i] / $soHanhKhach[$i]) ?>" disabled>
-                    </div>
+                <div class="cdInputGroup">
+                    <span class="cdInputText">Điểm đến</span>
+                    <input type="text" class="cdInputInput" name="diemDen" value="<?php echo $diemDen[$i] ?>" disabled>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <button type="submit" class="button">Mua vé</button>
+            <div class="cdRow">
+                <div class="cdInputGroup">
+                    <span class="cdInputText">Ngày đi</span>
+                    <input type="date" class="cdInputInput" name="ngayDi" value="<?php echo $ngayDi[$i] ?>" disabled>
                 </div>
+                <div class="cdInputGroup">
+                    <span class="cdInputText">Số hành khách</span>
+                    <input type="number" class="cdInputInput" name="soHanhKhach" value="<?php echo $qsoHanhKhach ?>" disabled>
+                </div>
+                <div class="cdInputGroup ">
+                    <span class="cdInputText">Giá vé</span>
+                    <input type="number" class="cdInputInput" name="giaVe" value="<?php echo ($qsoHanhKhach * $giaVe[$i] / $soHanhKhach[$i]) ?>" disabled>
+                </div>
+            </div>
+
+            <div class="cdRow cdCenter">
+                <button type="submit" class="cdButton">Mua vé</button>
             </div>
         </div>
     <?php } ?>
