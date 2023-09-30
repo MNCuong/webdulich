@@ -15,21 +15,43 @@
 </head>
 
 <body>
-    <div class="container border padding">
-        <div class="row">
-            <div class="col">Điểm khởi hành: Hà Nội</div>
-            <div class="col">Điểm đến: Hạ Long</div>
-        </div>
-        <div class="row">
-            <div class="col">Ngày đi: 01/01/2023</div>
-            <div class="col">Ngày khứ hồi: 01/01/2024</div>
 
-        </div>
-        <div class="row">
-            <div class="col">Số hành khách: 2</div>
-            <div class="col">
-                <div class="giaVe">
-                    Giá vé: 1.000.000 đ
+    <?php
+    $id = $_GET['id'];
+    $db = "anh";
+    $table = "chuyendi";
+    $conn = new mysqli("localhost", "root", "", $db) or die("Không connect đc với máy chủ");
+    $select = "SELECT * FROM $table WHERE id=$id";
+    $result_se_hang = mysqli_query($conn, $select);
+    $row = mysqli_fetch_object($result_se_hang);
+
+    $id = $row->id;
+    $phuongTien = $row->phuongTien;
+    $diemKhoiHanh = $row->diemKhoiHanh;
+    $diemDen = $row->diemDen;
+    $ngayDi = $row->ngayDi;
+    $soHanhKhach = $row->soHanhKhach;
+    $giaVe = $row->giaVe;
+    ?>
+
+    <div class="container marginTop" style="border-style: solid; border-width: 1px; border-radius: 10px;">
+        <form action="" method="post">
+            <div class="row">
+                <div class="col">
+                    <span class="input-group-text">Phương tiện</span>
+                    <div class="form-control"><?php echo $phuongTien ?></div>
+                </div>
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Điểm khởi hành</span>
+                        <input type="text" class="form-control" name="diemKhoiHanh" value="<?php echo $diemKhoiHanh ?>">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Điểm đến</span>
+                        <input type="text" class="form-control" name="diemDen" value="<?php echo $diemDen ?>">
+                    </div>
                 </div>
             </div>
         </div>
