@@ -28,20 +28,29 @@
 
     <datalist id="diemKhoiHanh">
         <?php foreach ($diemKhoiHanh as $diem) { ?>
-        <option value="<?php echo $diem; ?>">
-            <?php echo $diem; ?>
-        </option>
+            <option value="<?php echo $diem; ?>">
+                <?php echo $diem; ?>
+            </option>
         <?php } ?>
     </datalist>
     <datalist id="diemDen">
         <?php foreach ($diemDen as $diem) { ?>
-        <option value="<?php echo $diem; ?>">
-            <?php echo $diem; ?>
-        </option>
+            <option value="<?php echo $diem; ?>">
+                <?php echo $diem; ?>
+            </option>
         <?php } ?>
     </datalist>
 
-    <div class="cdContainer cdMargin cdBorder cdPadding cdMarginTop" style="flex-direction: column;">
+
+    <div class="cdContainer cdMargin cdPadding cdMarginTop">
+        <div class="cdRow" style="justify-content: start;">
+            <form action="veDaDat.php" method="post">
+                <button type="submit" class="cdButton">Vé đã đặt</button>
+            </form>
+        </div>
+    </div>
+    <div class="cdContainer cdMargin cdBorder" style="flex-direction: column;">
+
         <p class="cdHeading">Tìm mua vé</p>
 
         <form action="danhSachVe.php" method="post">
@@ -57,11 +66,10 @@
                     </div>
                     <div class="cdInputGroup">
                         <span class="cdInputText">Điểm khởi hành</span>
-                        <input type="text" class="cdInputInput" name="diemKhoiHanh" list="diemKhoiHanh"
-                            autocomplete="on">
+                        <input type="text" class="cdInputInput" name="diemKhoiHanh" list="diemKhoiHanh" autocomplete="on">
                     </div>
                     <div class="cdInputGroup">
-                        <span class="">Điểm đến</span>
+                        <span class="cdInputText">Điểm đến</span>
                         <input type="text" class="cdInputInput" name="diemDen" list="diemDen" autocomplete="on">
                     </div>
                 </div>

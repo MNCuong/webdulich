@@ -19,7 +19,7 @@
                 <button type="submit" class="cdButton">Thêm chuyến đi</button>
             </form>
         </div>
-        <div class=" cdRow" style="justify-content: start;">
+        <div class="cdRow" style="justify-content: start;">
             <div class="cdDropdown">
                 <button class="cdButton">
                     <?php
@@ -40,9 +40,9 @@
                     ?>
                 </button>
                 <div class="cdDropdown-content">
-                    <a href="adminDanhSachChuyenDi.php?phuongtien=1">Máy bay</a>
-                    <a href="adminDanhSachChuyenDi.php?phuongtien=2">Tàu hoả</a>
-                    <a href="adminDanhSachChuyenDi.php?phuongtien=3">Xe khách</a>
+                    <a href="indexadmin.php?danhmuc=danhsachchuyen&phuongtien=1">Máy bay</a>
+                    <a href="indexadmin.php?danhmuc=danhsachchuyen&phuongtien=2">Tàu hoả</a>
+                    <a href="indexadmin.php?danhmuc=danhsachchuyen&phuongtien=3">Xe khách</a>
                 </div>
             </div>
         </div>
@@ -53,7 +53,8 @@
                     <thead>
                         <tr>
                             <th>
-                                <button type="submit" class="cdButton" onclick="return confirm('Bạn có xác nhận xoá những chuyến đi đã chọn?')">
+                                <button type="submit" class="cdButton"
+                                    onclick="return confirm('Bạn có xác nhận xoá những chuyến đi đã chọn?')">
                                     <i class="fa fa-trash"></i>
                             </th>
                             <th>Số thứ tự</th>
@@ -61,7 +62,7 @@
                             <th>Điểm đến</th>
                             <th>Ngày đi</th>
                             <th>Số hành khách</th>
-                            <th>Giá vé</th>
+                            <th>Giá vé/người</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,37 +101,38 @@
                                 break;
                             }
                         ?>
-                            <tr>
-                                <td>
-                                    <input name="ids[]" value="<?php echo $id[$i] ?>" type="checkbox" class="cdCheckBox">
-                                </td>
-                                <td>
-                                    <?php echo $i ?>
-                                </td>
-                                <td>
-                                    <?php echo $diemKhoiHanh[$i] ?>
-                                </td>
-                                <td>
-                                    <?php echo $diemDen[$i] ?>
-                                </td>
-                                <td>
-                                    <?php echo $ngayDi[$i] ?>
-                                </td>
-                                <td>
-                                    <?php echo $soHanhKhach[$i] ?>
-                                </td>
-                                <td>
-                                    <?php echo $giaVe[$i] ?>
-                                </td>
-                                <td> <a href="suaChuyenDi.php?id=<?php echo $id[$i] ?>">
-                                        <i class="fa fa-edit cdButton"></i></a>
-                                </td>
-                                <td>
-                                    <a href="controllerXoaChuyenDi.php?id=<?php echo $id[$i] ?>" class="cdButton" onclick="return confirm('Bạn có chắc chắn muốn xoá?')">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                <input name="ids[]" value="<?php echo $id[$i] ?>" type="checkbox" class="cdCheckBox">
+                            </td>
+                            <td>
+                                <?php echo $i ?>
+                            </td>
+                            <td>
+                                <?php echo $diemKhoiHanh[$i] ?>
+                            </td>
+                            <td>
+                                <?php echo $diemDen[$i] ?>
+                            </td>
+                            <td>
+                                <?php echo $ngayDi[$i] ?>
+                            </td>
+                            <td>
+                                <?php echo $soHanhKhach[$i] ?>
+                            </td>
+                            <td>
+                                <?php echo $giaVe[$i] ?>
+                            </td>
+                            <td> <a href="suaChuyenDi.php?id=<?php echo $id[$i] ?>">
+                                    <i class="fa fa-edit cdButton"></i></a>
+                            </td>
+                            <td>
+                                <a href="controllerXoaChuyenDi.php?id=<?php echo $id[$i] ?>" class="cdButton"
+                                    onclick="return confirm('Bạn có chắc chắn muốn xoá?')">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
                         <?php
                         }
                         ?>
@@ -140,15 +142,16 @@
 
         </div>
 
-        <ul>
-            <?php
-            for ($i = 1; $i <= $soluongtrang; $i++) {
-                echo "<li><a href='adminDanhSachChuyenDi.php?page=$i'>$i</a></li> ";
-            }
-            ?>
-        </ul>
+        <div class="cdRow">
+            <ul>
+                <?php
+                    for ($i = 1; $i <= $soluongtrang; $i++) {
+                        echo "<li><a href='adminDanhSachChuyenDi.php?page=$i'>$i</a></li> ";
+                    }
+                ?>
+            </ul>
+        </div>
     </div>
 </body>
 
 </html>
-
